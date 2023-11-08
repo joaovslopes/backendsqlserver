@@ -1,0 +1,602 @@
+
+Object.defineProperty(exports, "__esModule", { value: true });
+
+const {
+  PrismaClientKnownRequestError,
+  PrismaClientUnknownRequestError,
+  PrismaClientRustPanicError,
+  PrismaClientInitializationError,
+  PrismaClientValidationError,
+  NotFoundError,
+  getPrismaClient,
+  sqltag,
+  empty,
+  join,
+  raw,
+  Decimal,
+  Debug,
+  objectEnumValues,
+  makeStrictEnum,
+  Extensions,
+  warnOnce,
+  defineDmmfProperty,
+  Public,
+} = require('./runtime/edge')
+
+
+const Prisma = {}
+
+exports.Prisma = Prisma
+exports.$Enums = {}
+
+/**
+ * Prisma Client JS version: 5.5.2
+ * Query Engine version: aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a
+ */
+Prisma.prismaVersion = {
+  client: "5.5.2",
+  engine: "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a"
+}
+
+Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
+Prisma.PrismaClientUnknownRequestError = PrismaClientUnknownRequestError
+Prisma.PrismaClientRustPanicError = PrismaClientRustPanicError
+Prisma.PrismaClientInitializationError = PrismaClientInitializationError
+Prisma.PrismaClientValidationError = PrismaClientValidationError
+Prisma.NotFoundError = NotFoundError
+Prisma.Decimal = Decimal
+
+/**
+ * Re-export of sql-template-tag
+ */
+Prisma.sql = sqltag
+Prisma.empty = empty
+Prisma.join = join
+Prisma.raw = raw
+Prisma.validator = Public.validator
+
+/**
+* Extensions
+*/
+Prisma.getExtensionContext = Extensions.getExtensionContext
+Prisma.defineExtension = Extensions.defineExtension
+
+/**
+ * Shorthand utilities for JSON filtering
+ */
+Prisma.DbNull = objectEnumValues.instances.DbNull
+Prisma.JsonNull = objectEnumValues.instances.JsonNull
+Prisma.AnyNull = objectEnumValues.instances.AnyNull
+
+Prisma.NullTypes = {
+  DbNull: objectEnumValues.classes.DbNull,
+  JsonNull: objectEnumValues.classes.JsonNull,
+  AnyNull: objectEnumValues.classes.AnyNull
+}
+
+
+
+/**
+ * Enums
+ */
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable',
+  Snapshot: 'Snapshot'
+});
+
+exports.Prisma.MEMB_INFOScalarFieldEnum = {
+  memb_guid: 'memb_guid',
+  memb___id: 'memb___id',
+  memb__pwd: 'memb__pwd',
+  memb_name: 'memb_name',
+  sno__numb: 'sno__numb',
+  post_code: 'post_code',
+  addr_info: 'addr_info',
+  addr_deta: 'addr_deta',
+  tel__numb: 'tel__numb',
+  phon_numb: 'phon_numb',
+  mail_addr: 'mail_addr',
+  fpas_ques: 'fpas_ques',
+  fpas_answ: 'fpas_answ',
+  job__code: 'job__code',
+  appl_days: 'appl_days',
+  modi_days: 'modi_days',
+  out__days: 'out__days',
+  true_days: 'true_days',
+  mail_chek: 'mail_chek',
+  bloc_code: 'bloc_code',
+  ctl1_code: 'ctl1_code',
+  AccountLevel: 'AccountLevel',
+  AccountExpireDate: 'AccountExpireDate',
+  vip: 'vip',
+  cash: 'cash',
+  RewardPlayer: 'RewardPlayer',
+  ChaosPoints: 'ChaosPoints',
+  BlessPoints: 'BlessPoints',
+  SoulPoints: 'SoulPoints',
+  LifePoints: 'LifePoints',
+  CreationPoints: 'CreationPoints',
+  GuardianPoints: 'GuardianPoints',
+  GemstonePoints: 'GemstonePoints',
+  HarmonyPoints: 'HarmonyPoints',
+  LRefiningPoints: 'LRefiningPoints',
+  HRefiningPoints: 'HRefiningPoints',
+  LockPassword: 'LockPassword'
+};
+
+exports.Prisma.AccountCharacterScalarFieldEnum = {
+  Number: 'Number',
+  Id: 'Id',
+  GameID1: 'GameID1',
+  GameID2: 'GameID2',
+  GameID3: 'GameID3',
+  GameID4: 'GameID4',
+  GameID5: 'GameID5',
+  GameIDC: 'GameIDC',
+  MoveCnt: 'MoveCnt',
+  ExtClass: 'ExtClass',
+  ExtWarehouse: 'ExtWarehouse',
+  GameID6: 'GameID6',
+  GameID7: 'GameID7',
+  GameID8: 'GameID8',
+  GameID9: 'GameID9',
+  GameID10: 'GameID10',
+  MaxCharacter: 'MaxCharacter'
+};
+
+exports.Prisma.CashShopDataScalarFieldEnum = {
+  AccountID: 'AccountID',
+  WCoinC: 'WCoinC',
+  WCoinP: 'WCoinP',
+  GoblinPoint: 'GoblinPoint'
+};
+
+exports.Prisma.CashShopInventoryScalarFieldEnum = {
+  BaseItemCode: 'BaseItemCode',
+  MainItemCode: 'MainItemCode',
+  AccountID: 'AccountID',
+  InventoryType: 'InventoryType',
+  PackageMainIndex: 'PackageMainIndex',
+  ProductBaseIndex: 'ProductBaseIndex',
+  ProductMainIndex: 'ProductMainIndex',
+  CoinValue: 'CoinValue',
+  ProductType: 'ProductType',
+  GiftName: 'GiftName',
+  GiftText: 'GiftText'
+};
+
+exports.Prisma.CashShopPeriodicItemScalarFieldEnum = {
+  ItemSerial: 'ItemSerial',
+  Time: 'Time'
+};
+
+exports.Prisma.CharacterScalarFieldEnum = {
+  AccountID: 'AccountID',
+  Name: 'Name',
+  cLevel: 'cLevel',
+  LevelUpPoint: 'LevelUpPoint',
+  Class: 'Class',
+  Experience: 'Experience',
+  Strength: 'Strength',
+  Dexterity: 'Dexterity',
+  Vitality: 'Vitality',
+  Energy: 'Energy',
+  Leadership: 'Leadership',
+  Inventory: 'Inventory',
+  MagicList: 'MagicList',
+  Money: 'Money',
+  Life: 'Life',
+  MaxLife: 'MaxLife',
+  Mana: 'Mana',
+  MaxMana: 'MaxMana',
+  BP: 'BP',
+  MaxBP: 'MaxBP',
+  Shield: 'Shield',
+  MaxShield: 'MaxShield',
+  MapNumber: 'MapNumber',
+  MapPosX: 'MapPosX',
+  MapPosY: 'MapPosY',
+  MapDir: 'MapDir',
+  PkCount: 'PkCount',
+  PkLevel: 'PkLevel',
+  PkTime: 'PkTime',
+  MDate: 'MDate',
+  LDate: 'LDate',
+  CtlCode: 'CtlCode',
+  DbVersion: 'DbVersion',
+  Quest: 'Quest',
+  ChatLimitTime: 'ChatLimitTime',
+  FruitPoint: 'FruitPoint',
+  EffectList: 'EffectList',
+  FruitAddPoint: 'FruitAddPoint',
+  FruitSubPoint: 'FruitSubPoint',
+  ResetCount: 'ResetCount',
+  MasterResetCount: 'MasterResetCount',
+  ExtInventory: 'ExtInventory',
+  Resets: 'Resets',
+  ResetsDay: 'ResetsDay',
+  ResetsWeek: 'ResetsWeek',
+  ResetsMonth: 'ResetsMonth',
+  MResets: 'MResets',
+  MResetsDay: 'MResetsDay',
+  MResetsWeek: 'MResetsWeek',
+  MResetsMonth: 'MResetsMonth',
+  PKTotal: 'PKTotal',
+  PKDay: 'PKDay',
+  PKWeek: 'PKWeek',
+  PKMonth: 'PKMonth',
+  HeroTotal: 'HeroTotal',
+  HeroDay: 'HeroDay',
+  HeroWeek: 'HeroWeek',
+  HeroMonth: 'HeroMonth',
+  tradewins: 'tradewins',
+  matamata: 'matamata',
+  duel_total: 'duel_total',
+  duel_semanal: 'duel_semanal',
+  duel_mensal: 'duel_mensal'
+};
+
+exports.Prisma.DefaultClassTypeScalarFieldEnum = {
+  Class: 'Class',
+  Level: 'Level',
+  LevelUpPoint: 'LevelUpPoint',
+  Strength: 'Strength',
+  Dexterity: 'Dexterity',
+  Vitality: 'Vitality',
+  Energy: 'Energy',
+  Leadership: 'Leadership',
+  Inventory: 'Inventory',
+  MagicList: 'MagicList',
+  Life: 'Life',
+  MaxLife: 'MaxLife',
+  Mana: 'Mana',
+  MaxMana: 'MaxMana',
+  MapNumber: 'MapNumber',
+  MapPosX: 'MapPosX',
+  MapPosY: 'MapPosY',
+  Quest: 'Quest',
+  DbVersion: 'DbVersion',
+  EffectList: 'EffectList'
+};
+
+exports.Prisma.EventLeoTheHelperScalarFieldEnum = {
+  Name: 'Name',
+  Status: 'Status'
+};
+
+exports.Prisma.EventSantaClausScalarFieldEnum = {
+  Name: 'Name',
+  Status: 'Status'
+};
+
+exports.Prisma.GameServerInfoScalarFieldEnum = {
+  Number: 'Number',
+  ItemCount: 'ItemCount',
+  ZenCount: 'ZenCount',
+  AceItemCount: 'AceItemCount'
+};
+
+exports.Prisma.Gens_RankScalarFieldEnum = {
+  Name: 'Name',
+  Family: 'Family',
+  Contribution: 'Contribution'
+};
+
+exports.Prisma.Gens_RewardScalarFieldEnum = {
+  Name: 'Name',
+  Rank: 'Rank',
+  Status: 'Status'
+};
+
+exports.Prisma.GuildScalarFieldEnum = {
+  G_Name: 'G_Name',
+  G_Mark: 'G_Mark',
+  G_Score: 'G_Score',
+  G_Master: 'G_Master',
+  G_Count: 'G_Count',
+  G_Notice: 'G_Notice',
+  Number: 'Number',
+  G_Type: 'G_Type',
+  G_Rival: 'G_Rival',
+  G_Union: 'G_Union',
+  MemberCount: 'MemberCount'
+};
+
+exports.Prisma.GuildMemberScalarFieldEnum = {
+  Name: 'Name',
+  G_Name: 'G_Name',
+  G_Level: 'G_Level',
+  G_Status: 'G_Status'
+};
+
+exports.Prisma.HelperDataScalarFieldEnum = {
+  Name: 'Name',
+  Data: 'Data'
+};
+
+exports.Prisma.LuckyCoinScalarFieldEnum = {
+  AccountID: 'AccountID',
+  LuckyCoin: 'LuckyCoin'
+};
+
+exports.Prisma.LuckyItemScalarFieldEnum = {
+  ItemSerial: 'ItemSerial',
+  DurabilitySmall: 'DurabilitySmall'
+};
+
+exports.Prisma.MEMB_STATScalarFieldEnum = {
+  memb___id: 'memb___id',
+  ConnectStat: 'ConnectStat',
+  ServerName: 'ServerName',
+  IP: 'IP',
+  ConnectTM: 'ConnectTM',
+  DisConnectTM: 'DisConnectTM',
+  OnlineHours: 'OnlineHours',
+  HWID: 'HWID'
+};
+
+exports.Prisma.MasterSkillTreeScalarFieldEnum = {
+  Name: 'Name',
+  MasterLevel: 'MasterLevel',
+  MasterPoint: 'MasterPoint',
+  MasterExperience: 'MasterExperience',
+  MasterSkill: 'MasterSkill'
+};
+
+exports.Prisma.MuCastle_DATAScalarFieldEnum = {
+  MAP_SVR_GROUP: 'MAP_SVR_GROUP',
+  SIEGE_START_DATE: 'SIEGE_START_DATE',
+  SIEGE_END_DATE: 'SIEGE_END_DATE',
+  SIEGE_GUILDLIST_SETTED: 'SIEGE_GUILDLIST_SETTED',
+  SIEGE_ENDED: 'SIEGE_ENDED',
+  CASTLE_OCCUPY: 'CASTLE_OCCUPY',
+  OWNER_GUILD: 'OWNER_GUILD',
+  MONEY: 'MONEY',
+  TAX_RATE_CHAOS: 'TAX_RATE_CHAOS',
+  TAX_RATE_STORE: 'TAX_RATE_STORE',
+  TAX_HUNT_ZONE: 'TAX_HUNT_ZONE'
+};
+
+exports.Prisma.MuCastle_NPCScalarFieldEnum = {
+  MAP_SVR_GROUP: 'MAP_SVR_GROUP',
+  NPC_NUMBER: 'NPC_NUMBER',
+  NPC_INDEX: 'NPC_INDEX',
+  NPC_DF_LEVEL: 'NPC_DF_LEVEL',
+  NPC_RG_LEVEL: 'NPC_RG_LEVEL',
+  NPC_MAXHP: 'NPC_MAXHP',
+  NPC_HP: 'NPC_HP',
+  NPC_X: 'NPC_X',
+  NPC_Y: 'NPC_Y',
+  NPC_DIR: 'NPC_DIR',
+  NPC_CREATEDATE: 'NPC_CREATEDATE'
+};
+
+exports.Prisma.MuCastle_REG_SIEGEScalarFieldEnum = {
+  MAP_SVR_GROUP: 'MAP_SVR_GROUP',
+  REG_SIEGE_GUILD: 'REG_SIEGE_GUILD',
+  REG_MARKS: 'REG_MARKS',
+  IS_GIVEUP: 'IS_GIVEUP',
+  SEQ_NUM: 'SEQ_NUM'
+};
+
+exports.Prisma.OptionDataScalarFieldEnum = {
+  Name: 'Name',
+  SkillKey: 'SkillKey',
+  GameOption: 'GameOption',
+  Qkey: 'Qkey',
+  Wkey: 'Wkey',
+  Ekey: 'Ekey',
+  ChatWindow: 'ChatWindow',
+  Rkey: 'Rkey',
+  QWERLevel: 'QWERLevel'
+};
+
+exports.Prisma.QuestKillCountScalarFieldEnum = {
+  Name: 'Name',
+  QuestIndex: 'QuestIndex',
+  MonsterClass1: 'MonsterClass1',
+  KillCount1: 'KillCount1',
+  MonsterClass2: 'MonsterClass2',
+  KillCount2: 'KillCount2',
+  MonsterClass3: 'MonsterClass3',
+  KillCount3: 'KillCount3',
+  MonsterClass4: 'MonsterClass4',
+  KillCount4: 'KillCount4',
+  MonsterClass5: 'MonsterClass5',
+  KillCount5: 'KillCount5'
+};
+
+exports.Prisma.QuestWorldScalarFieldEnum = {
+  Name: 'Name',
+  QuestWorldList: 'QuestWorldList'
+};
+
+exports.Prisma.RankingBloodCastleScalarFieldEnum = {
+  Name: 'Name',
+  Score: 'Score'
+};
+
+exports.Prisma.RankingChaosCastleScalarFieldEnum = {
+  Name: 'Name',
+  Score: 'Score'
+};
+
+exports.Prisma.RankingDevilSquareScalarFieldEnum = {
+  Name: 'Name',
+  Score: 'Score'
+};
+
+exports.Prisma.RankingDuelScalarFieldEnum = {
+  Name: 'Name',
+  WinScore: 'WinScore',
+  LoseScore: 'LoseScore'
+};
+
+exports.Prisma.RankingIllusionTempleScalarFieldEnum = {
+  Name: 'Name',
+  Score: 'Score'
+};
+
+exports.Prisma.T_CGuidScalarFieldEnum = {
+  GUID: 'GUID',
+  Name: 'Name'
+};
+
+exports.Prisma.T_FriendMailScalarFieldEnum = {
+  MemoIndex: 'MemoIndex',
+  GUID: 'GUID',
+  FriendName: 'FriendName',
+  wDate: 'wDate',
+  Subject: 'Subject',
+  bRead: 'bRead',
+  Memo: 'Memo',
+  Photo: 'Photo',
+  Dir: 'Dir',
+  Act: 'Act'
+};
+
+exports.Prisma.T_FriendMainScalarFieldEnum = {
+  GUID: 'GUID',
+  Name: 'Name',
+  FriendCount: 'FriendCount',
+  MemoCount: 'MemoCount',
+  MemoTotal: 'MemoTotal'
+};
+
+exports.Prisma.T_PetItem_InfoScalarFieldEnum = {
+  ItemSerial: 'ItemSerial',
+  Pet_Level: 'Pet_Level',
+  Pet_Exp: 'Pet_Exp'
+};
+
+exports.Prisma.WarehouseScalarFieldEnum = {
+  AccountID: 'AccountID',
+  Items: 'Items',
+  Money: 'Money',
+  EndUseDate: 'EndUseDate',
+  DbVersion: 'DbVersion',
+  pw: 'pw',
+  VaultCounts: 'VaultCounts',
+  LastVaultID: 'LastVaultID'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+
+exports.Prisma.ModelName = {
+  MEMB_INFO: 'MEMB_INFO',
+  AccountCharacter: 'AccountCharacter',
+  CashShopData: 'CashShopData',
+  CashShopInventory: 'CashShopInventory',
+  CashShopPeriodicItem: 'CashShopPeriodicItem',
+  Character: 'Character',
+  DefaultClassType: 'DefaultClassType',
+  EventLeoTheHelper: 'EventLeoTheHelper',
+  EventSantaClaus: 'EventSantaClaus',
+  GameServerInfo: 'GameServerInfo',
+  Gens_Rank: 'Gens_Rank',
+  Gens_Reward: 'Gens_Reward',
+  Guild: 'Guild',
+  GuildMember: 'GuildMember',
+  HelperData: 'HelperData',
+  LuckyCoin: 'LuckyCoin',
+  LuckyItem: 'LuckyItem',
+  MEMB_STAT: 'MEMB_STAT',
+  MasterSkillTree: 'MasterSkillTree',
+  MuCastle_DATA: 'MuCastle_DATA',
+  MuCastle_NPC: 'MuCastle_NPC',
+  MuCastle_REG_SIEGE: 'MuCastle_REG_SIEGE',
+  OptionData: 'OptionData',
+  QuestKillCount: 'QuestKillCount',
+  QuestWorld: 'QuestWorld',
+  RankingBloodCastle: 'RankingBloodCastle',
+  RankingChaosCastle: 'RankingChaosCastle',
+  RankingDevilSquare: 'RankingDevilSquare',
+  RankingDuel: 'RankingDuel',
+  RankingIllusionTemple: 'RankingIllusionTemple',
+  T_CGuid: 'T_CGuid',
+  T_FriendMail: 'T_FriendMail',
+  T_FriendMain: 'T_FriendMain',
+  T_PetItem_Info: 'T_PetItem_Info',
+  warehouse: 'warehouse'
+};
+/**
+ * Create the Client
+ */
+const config = {
+  "generator": {
+    "name": "client",
+    "provider": {
+      "fromEnvVar": null,
+      "value": "prisma-client-js"
+    },
+    "output": {
+      "value": "C:\\Users\\JL\\Documents\\web\\backend\\prisma\\generated\\client",
+      "fromEnvVar": null
+    },
+    "config": {
+      "engineType": "library"
+    },
+    "binaryTargets": [
+      {
+        "fromEnvVar": null,
+        "value": "windows",
+        "native": true
+      }
+    ],
+    "previewFeatures": [],
+    "isCustomOutput": true
+  },
+  "relativeEnvPaths": {
+    "rootEnvPath": "../../../.env",
+    "schemaEnvPath": "../../../.env"
+  },
+  "relativePath": "../..",
+  "clientVersion": "5.5.2",
+  "engineVersion": "aebc046ce8b88ebbcb45efe31cbe7d06fd6abc0a",
+  "datasourceNames": [
+    "db"
+  ],
+  "activeProvider": "sqlserver",
+  "inlineDatasources": {
+    "db": {
+      "url": {
+        "fromEnvVar": "DATABASE_URL",
+        "value": null
+      }
+    }
+  },
+  "inlineSchema": "Z2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgPSAicHJpc21hLWNsaWVudC1qcyIKICBvdXRwdXQgICA9ICIuL2dlbmVyYXRlZC9jbGllbnQiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyID0gInNxbHNlcnZlciIKICB1cmwgICAgICA9IGVudigiREFUQUJBU0VfVVJMIikKfQoKbW9kZWwgTUVNQl9JTkZPIHsKICBtZW1iX2d1aWQgICAgICAgICBJbnQgICAgICAgQGlkKGNsdXN0ZXJlZDogZmFsc2UsIHNvcnQ6IERlc2MsIG1hcDogIlBLX01FTUJfSU5GT18xIikgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQogIG1lbWJfX19pZCAgICAgICAgIFN0cmluZyAgICBAZGIuVmFyQ2hhcigxMCkKICBtZW1iX19wd2QgICAgICAgICBTdHJpbmcgICAgQGRiLlZhckNoYXIoMTApCiAgbWVtYl9uYW1lICAgICAgICAgU3RyaW5nICAgIEBkYi5WYXJDaGFyKDEwKQogIHNub19fbnVtYiAgICAgICAgIFN0cmluZyAgICBAZGIuQ2hhcigxOCkKICBwb3N0X2NvZGUgICAgICAgICBTdHJpbmc/ICAgQGRiLkNoYXIoNikKICBhZGRyX2luZm8gICAgICAgICBTdHJpbmc/ICAgQGRiLlZhckNoYXIoNTApCiAgYWRkcl9kZXRhICAgICAgICAgU3RyaW5nPyAgIEBkYi5WYXJDaGFyKDUwKQogIHRlbF9fbnVtYiAgICAgICAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcigyMCkKICBwaG9uX251bWIgICAgICAgICBTdHJpbmc/ICAgQGRiLlZhckNoYXIoMTUpCiAgbWFpbF9hZGRyICAgICAgICAgU3RyaW5nPyAgIEBkYi5WYXJDaGFyKDUwKQogIGZwYXNfcXVlcyAgICAgICAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcig1MCkKICBmcGFzX2Fuc3cgICAgICAgICBTdHJpbmc/ICAgQGRiLlZhckNoYXIoNTApCiAgam9iX19jb2RlICAgICAgICAgU3RyaW5nPyAgIEBkYi5DaGFyKDIpCiAgYXBwbF9kYXlzICAgICAgICAgRGF0ZVRpbWU/IEBkYi5EYXRlVGltZQogIG1vZGlfZGF5cyAgICAgICAgIERhdGVUaW1lPyBAZGIuRGF0ZVRpbWUKICBvdXRfX2RheXMgICAgICAgICBEYXRlVGltZT8gQGRiLkRhdGVUaW1lCiAgdHJ1ZV9kYXlzICAgICAgICAgRGF0ZVRpbWU/IEBkYi5EYXRlVGltZQogIG1haWxfY2hlayAgICAgICAgIFN0cmluZz8gICBAZGVmYXVsdCgiMCIsIG1hcDogIkRGX01FTUJfSU5GT19tYWlsX2NoZWsiKSBAZGIuQ2hhcigxKQogIGJsb2NfY29kZSAgICAgICAgIFN0cmluZyAgICBAZGIuQ2hhcigxKQogIGN0bDFfY29kZSAgICAgICAgIFN0cmluZyAgICBAZGIuQ2hhcigxKQogIEFjY291bnRMZXZlbCAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9NRU1CX0lORk9fQWNjb3VudExldmVsIikKICBBY2NvdW50RXhwaXJlRGF0ZSBEYXRlVGltZSAgQGRlZmF1bHQoZGJnZW5lcmF0ZWQoIjAiKSwgbWFwOiAiREZfX01FTUJfSU5GT19fQWNjb3VfXzU2RThFN0FCIikgQGRiLlNtYWxsRGF0ZVRpbWUKICB2aXAgICAgICAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fdmlwX181N0REMEJFNCIpCiAgY2FzaCAgICAgICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19NRU1CX0lORk9fX2Nhc2hfXzU4RDEzMDFEIikKICBSZXdhcmRQbGF5ZXIgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fUmV3YXJfXzU5QzU1NDU2IikKICBDaGFvc1BvaW50cyAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fQ2hhb3NfXzVBQjk3ODhGIikKICBCbGVzc1BvaW50cyAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fQmxlc3NfXzVCQUQ5Q0M4IikKICBTb3VsUG9pbnRzICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fU291bFBfXzVDQTFDMTAxIikKICBMaWZlUG9pbnRzICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fTGlmZVBfXzVEOTVFNTNBIikKICBDcmVhdGlvblBvaW50cyAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fQ3JlYXRfXzVFOEEwOTczIikKICBHdWFyZGlhblBvaW50cyAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fR3VhcmRfXzVGN0UyREFDIikKICBHZW1zdG9uZVBvaW50cyAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fR2Vtc3RfXzYwNzI1MUU1IikKICBIYXJtb255UG9pbnRzICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fSGFybW9fXzYxNjY3NjFFIikKICBMUmVmaW5pbmdQb2ludHMgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fTFJlZmlfXzYyNUE5QTU3IikKICBIUmVmaW5pbmdQb2ludHMgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fSFJlZmlfXzYzNEVCRTkwIikKICBMb2NrUGFzc3dvcmQgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX01FTUJfSU5GT19fTG9ja1BfXzA2OTdGQUNEIikKCiAgQEBpbmRleChbc25vX19udW1iKHNvcnQ6IERlc2MpLCBtZW1iX25hbWUoc29ydDogRGVzYyldLCBtYXA6ICJJWF9NRU1CX0RFVEFJTCIpCiAgQEBpbmRleChbbWVtYl9fX2lkKHNvcnQ6IERlc2MpXSwgbWFwOiAiSVhfTUVNQl9JTkZPXzEiLCBjbHVzdGVyZWQ6IHRydWUpCn0KCgoKbW9kZWwgQWNjb3VudENoYXJhY3RlciB7CiAgTnVtYmVyICAgICAgIEludCAgICAgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQogIElkICAgICAgICAgICBTdHJpbmcgIEBpZChjbHVzdGVyZWQ6IGZhbHNlLCBtYXA6ICJQS19BY2NvdW50Q2hhcmFjdGVyIikgQGRiLlZhckNoYXIoMTApCiAgR2FtZUlEMSAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2FtZUlEMiAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2FtZUlEMyAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2FtZUlENCAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2FtZUlENSAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2FtZUlEQyAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgTW92ZUNudCAgICAgIEludD8gICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0FjY291bnRDaF9fTW92ZUNfXzdBMzIyM0U4IikgQGRiLlRpbnlJbnQKICBFeHRDbGFzcyAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJkZl9BY2NvdW50Q2hhcmFjdGVyX0V4dENsYXNzIikKICBFeHRXYXJlaG91c2UgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQWNjb3VudENoX19FeHRXYV9fMUNCQzQ2MTYiKQogIEdhbWVJRDYgICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIEdhbWVJRDcgICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIEdhbWVJRDggICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIEdhbWVJRDkgICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIEdhbWVJRDEwICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIE1heENoYXJhY3RlciBJbnQgICAgIEBkZWZhdWx0KDEwLCBtYXA6ICJERl9fQWNjb3VudENoX19NYXhDaF9fMURCMDZBNEYiKQp9CgovLy8gVGhlIHVuZGVybHlpbmcgdGFibGUgZG9lcyBub3QgY29udGFpbiBhIHZhbGlkIHVuaXF1ZSBpZGVudGlmaWVyIGFuZCBjYW4gdGhlcmVmb3JlIGN1cnJlbnRseSBub3QgYmUgaGFuZGxlZCBieSBQcmlzbWEgQ2xpZW50Lgptb2RlbCBDSEFPU19CT1hfR0VORVNJUyB7CiAgQWNjb3VudCAgICAgIFN0cmluZyAgICBAZGIuTlZhckNoYXIoMTApCiAgTmFtZSAgICAgICAgIFN0cmluZyAgICBAZGIuTlZhckNoYXIoMTApCiAgU3RhdGUgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DSEFPU19CT1hfR0VORVNJU19TdGF0ZSIpCiAgU2VsZWN0ZWRLZXkgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DSEFPU19CT1hfR0VORVNJU19TZWxlY3RlZEtleSIpCiAgU2VsZWN0ZWRDb21iIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DSEFPU19CT1hfR0VORVNJU19TZWxlY3RlZENvbWIiKQogIEl0ZW1zICAgICAgICBCeXRlcz8gICAgQGRiLlZhckJpbmFyeSgxOTIwKQogIExhc3RVc2UgICAgICBEYXRlVGltZT8gQGRlZmF1bHQobm93KCksIG1hcDogIkRGX0NIQU9TX0JPWF9HRU5FU0lTX0xhc3RVc2UiKSBAZGIuRGF0ZVRpbWUKCiAgQEBpZ25vcmUKfQoKLy8vIFRoZSB1bmRlcmx5aW5nIHRhYmxlIGRvZXMgbm90IGNvbnRhaW4gYSB2YWxpZCB1bmlxdWUgaWRlbnRpZmllciBhbmQgY2FuIHRoZXJlZm9yZSBjdXJyZW50bHkgbm90IGJlIGhhbmRsZWQgYnkgUHJpc21hIENsaWVudC4KbW9kZWwgQ2FzaExvZyB7CiAgSUQgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBVc2VySUQgICBTdHJpbmc/ICAgQGRiLlZhckNoYXIoMTYpCiAgQW1vdW50ICAgRmxvYXQ/ICAgIEBkYi5Nb25leQogIFNlbnREYXRlIERhdGVUaW1lPyBAZGVmYXVsdChub3coKSwgbWFwOiAiREZfX0Nhc2hMb2dfX1NlbnREYXRfXzFFQTQ4RTg4IikgQGRiLlNtYWxsRGF0ZVRpbWUKCiAgQEBpZ25vcmUKfQoKbW9kZWwgQ2FzaFNob3BEYXRhIHsKICBBY2NvdW50SUQgICBTdHJpbmcgQGlkKG1hcDogIlBLX1RlbXBDYXNoU2hvcCIpIEBkYi5WYXJDaGFyKDEwKQogIFdDb2luQyAgICAgIEludD8KICBXQ29pblAgICAgICBJbnQ/CiAgR29ibGluUG9pbnQgSW50Pwp9Cgptb2RlbCBDYXNoU2hvcEludmVudG9yeSB7CiAgQmFzZUl0ZW1Db2RlICAgICBJbnQgICAgIEBpZChtYXA6ICJQS19DYXNoU2hvcEludmVudG9yeSIpIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBNYWluSXRlbUNvZGUgICAgIEludD8KICBBY2NvdW50SUQgICAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgSW52ZW50b3J5VHlwZSAgICBJbnQ/CiAgUGFja2FnZU1haW5JbmRleCBJbnQ/CiAgUHJvZHVjdEJhc2VJbmRleCBJbnQ/CiAgUHJvZHVjdE1haW5JbmRleCBJbnQ/CiAgQ29pblZhbHVlICAgICAgICBGbG9hdD8KICBQcm9kdWN0VHlwZSAgICAgIEludD8KICBHaWZ0TmFtZSAgICAgICAgIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgR2lmdFRleHQgICAgICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDIwMCkKfQoKbW9kZWwgQ2FzaFNob3BQZXJpb2RpY0l0ZW0gewogIEl0ZW1TZXJpYWwgSW50ICBAaWQobWFwOiAiUEtfQ2FzaFNob3BQZXJpb2RpY0l0ZW0iKQogIFRpbWUgICAgICAgSW50Pwp9Cgptb2RlbCBDaGFyYWN0ZXIgewogIEFjY291bnRJRCAgICAgICAgU3RyaW5nICAgIEBkYi5WYXJDaGFyKDEwKQogIE5hbWUgICAgICAgICAgICAgU3RyaW5nICAgIEBpZChjbHVzdGVyZWQ6IGZhbHNlLCBtYXA6ICJQS19DaGFyYWN0ZXIiKSBAZGIuVmFyQ2hhcigxMCkKICBjTGV2ZWwgICAgICAgICAgIEludD8gICAgICBAZGVmYXVsdCgxLCBtYXA6ICJERl9DaGFyYWN0ZXJfY0xldmVsIikKICBMZXZlbFVwUG9pbnQgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DaGFyYWN0ZXJfTGV2ZWxVcFBvaW50IikKICBDbGFzcyAgICAgICAgICAgIEludD8gICAgICBAZGIuVGlueUludAogIEV4cGVyaWVuY2UgICAgICAgSW50PyAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX0NoYXJhY3Rlcl9FeHBlcmllbmNlIikKICBTdHJlbmd0aCAgICAgICAgIEludD8KICBEZXh0ZXJpdHkgICAgICAgIEludD8KICBWaXRhbGl0eSAgICAgICAgIEludD8KICBFbmVyZ3kgICAgICAgICAgIEludD8KICBMZWFkZXJzaGlwICAgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19MZWFkZV9fN0E2NzJFMTIiKQogIEludmVudG9yeSAgICAgICAgQnl0ZXM/ICAgIEBkYi5WYXJCaW5hcnkoMzk4NCkKICBNYWdpY0xpc3QgICAgICAgIEJ5dGVzPyAgICBAZGIuVmFyQmluYXJ5KDE4MCkKICBNb25leSAgICAgICAgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DaGFyYWN0ZXJfTW9uZXkiKQogIExpZmUgICAgICAgICAgICAgRmxvYXQ/ICAgIEBkYi5SZWFsCiAgTWF4TGlmZSAgICAgICAgICBGbG9hdD8gICAgQGRiLlJlYWwKICBNYW5hICAgICAgICAgICAgIEZsb2F0PyAgICBAZGIuUmVhbAogIE1heE1hbmEgICAgICAgICAgRmxvYXQ/ICAgIEBkYi5SZWFsCiAgQlAgICAgICAgICAgICAgICBGbG9hdD8gICAgQGRiLlJlYWwKICBNYXhCUCAgICAgICAgICAgIEZsb2F0PyAgICBAZGIuUmVhbAogIFNoaWVsZCAgICAgICAgICAgRmxvYXQ/ICAgIEBkYi5SZWFsCiAgTWF4U2hpZWxkICAgICAgICBGbG9hdD8gICAgQGRiLlJlYWwKICBNYXBOdW1iZXIgICAgICAgIEludD8gICAgICBAZGIuU21hbGxJbnQKICBNYXBQb3NYICAgICAgICAgIEludD8gICAgICBAZGIuU21hbGxJbnQKICBNYXBQb3NZICAgICAgICAgIEludD8gICAgICBAZGIuU21hbGxJbnQKICBNYXBEaXIgICAgICAgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DaGFyYWN0ZXJfTWFwRGlyIikgQGRiLlRpbnlJbnQKICBQa0NvdW50ICAgICAgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DaGFyYWN0ZXJfUGtDb3VudCIpCiAgUGtMZXZlbCAgICAgICAgICBJbnQ/ICAgICAgQGRlZmF1bHQoMywgbWFwOiAiREZfQ2hhcmFjdGVyX1BrTGV2ZWwiKQogIFBrVGltZSAgICAgICAgICAgSW50PyAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX0NoYXJhY3Rlcl9Qa1RpbWUiKQogIE1EYXRlICAgICAgICAgICAgRGF0ZVRpbWU/IEBkYi5TbWFsbERhdGVUaW1lCiAgTERhdGUgICAgICAgICAgICBEYXRlVGltZT8gQGRiLlNtYWxsRGF0ZVRpbWUKICBDdGxDb2RlICAgICAgICAgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9DaGFyYWN0ZXJfQ3RsQ29kZSIpIEBkYi5UaW55SW50CiAgRGJWZXJzaW9uICAgICAgICBJbnQ/ICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fRGJWZXJfXzc4N0VFNUEwIikgQGRiLlRpbnlJbnQKICBRdWVzdCAgICAgICAgICAgIEJ5dGVzPyAgICBAZGVmYXVsdChkYmdlbmVyYXRlZCgiMCIpLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19RdWVzdF9fNzk3MzA5RDkiKSBAZGIuVmFyQmluYXJ5KDUwKQogIENoYXRMaW1pdFRpbWUgICAgSW50PyAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX0NoYXRMX183QjVCNTI0QiIpIEBkYi5TbWFsbEludAogIEZydWl0UG9pbnQgICAgICAgSW50PyAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX0NoYXJhY3Rlcl9GcnVpdFBvaW50IikKICBFZmZlY3RMaXN0ICAgICAgIEJ5dGVzPyAgICBAZGIuVmFyQmluYXJ5KDIwOCkKICBGcnVpdEFkZFBvaW50ICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19GcnVpdF9fNEY2N0MxNzQiKQogIEZydWl0U3ViUG9pbnQgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX0ZydWl0X181MDVCRTVBRCIpCiAgUmVzZXRDb3VudCAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fUmVzZXRfXzUxNTAwOUU2IikKICBNYXN0ZXJSZXNldENvdW50IEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19NYXN0ZV9fN0NGOTgxRkEiKQogIEV4dEludmVudG9yeSAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX0V4dEluX180MEU0OTdGMyIpCiAgUmVzZXRzICAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fUmVzZXRfXzM1ODdGM0UwIikKICBSZXNldHNEYXkgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19SZXNldF9fMzY3QzE4MTkiKQogIFJlc2V0c1dlZWsgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX1Jlc2V0X18zNzcwM0M1MiIpCiAgUmVzZXRzTW9udGggICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fUmVzZXRfXzM4NjQ2MDhCIikKICBNUmVzZXRzICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19NUmVzZV9fMzk1ODg0QzQiKQogIE1SZXNldHNEYXkgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX01SZXNlX18zQTRDQThGRCIpCiAgTVJlc2V0c1dlZWsgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fTVJlc2VfXzNCNDBDRDM2IikKICBNUmVzZXRzTW9udGggICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19NUmVzZV9fM0MzNEYxNkYiKQogIFBLVG90YWwgICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX1BLVG90X18zRDI5MTVBOCIpCiAgUEtEYXkgICAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fUEtEYXlfXzNFMUQzOUUxIikKICBQS1dlZWsgICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19QS1dlZV9fM0YxMTVFMUEiKQogIFBLTW9udGggICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX1BLTW9uX180MDA1ODI1MyIpCiAgSGVyb1RvdGFsICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fSGVyb1RfXzQwRjlBNjhDIikKICBIZXJvRGF5ICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19IZXJvRF9fNDFFRENBQzUiKQogIEhlcm9XZWVrICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX0hlcm9XX180MkUxRUVGRSIpCiAgSGVyb01vbnRoICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fSGVyb01fXzQzRDYxMzM3IikKICB0cmFkZXdpbnMgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX190cmFkZV9fNDRDQTM3NzAiKQogIG1hdGFtYXRhICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX21hdGFtX180NUJFNUJBOSIpCiAgZHVlbF90b3RhbCAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0NoYXJhY3Rlcl9fZHVlbF9fXzQ2QjI3RkUyIikKICBkdWVsX3NlbWFuYWwgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fQ2hhcmFjdGVyX19kdWVsX19fNDdBNkE0MUIiKQogIGR1ZWxfbWVuc2FsICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19DaGFyYWN0ZXJfX2R1ZWxfX180ODlBQzg1NCIpCn0KCi8vLyBUaGUgdW5kZXJseWluZyB0YWJsZSBkb2VzIG5vdCBjb250YWluIGEgdmFsaWQgdW5pcXVlIGlkZW50aWZpZXIgYW5kIGNhbiB0aGVyZWZvcmUgY3VycmVudGx5IG5vdCBiZSBoYW5kbGVkIGJ5IFByaXNtYSBDbGllbnQuCm1vZGVsIERlYXRoU3lzdGVtIHsKICBtX1NlcmlhbCBJbnQ/CiAgRGVhdGhzICAgSW50PwoKICBAQGlnbm9yZQp9Cgptb2RlbCBEZWZhdWx0Q2xhc3NUeXBlIHsKICBDbGFzcyAgICAgICAgSW50ICAgIEBpZChtYXA6ICJQS19EZWZhdWx0Q2xhc3NUeXBlIikgQGRiLlRpbnlJbnQKICBMZXZlbCAgICAgICAgSW50PyAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19EZWZhdWx0Q2xfX0xldmVsX183MjkxMDIyMCIpIEBkYi5TbWFsbEludAogIExldmVsVXBQb2ludCBJbnQ/ICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0RlZmF1bHRDbF9fTGV2ZWxfXzczODUyNjU5IikgQGRiLlNtYWxsSW50CiAgU3RyZW5ndGggICAgIEludD8gICBAZGIuU21hbGxJbnQKICBEZXh0ZXJpdHkgICAgSW50PyAgIEBkYi5TbWFsbEludAogIFZpdGFsaXR5ICAgICBJbnQ/ICAgQGRiLlNtYWxsSW50CiAgRW5lcmd5ICAgICAgIEludD8gICBAZGIuU21hbGxJbnQKICBMZWFkZXJzaGlwICAgSW50PyAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19EZWZhdWx0Q2xfX0xlYWRlX183MTlDRERFNyIpIEBkYi5TbWFsbEludAogIEludmVudG9yeSAgICBCeXRlcz8gQGRiLlZhckJpbmFyeSgzNzc2KQogIE1hZ2ljTGlzdCAgICBCeXRlcz8gQGRiLlZhckJpbmFyeSgxODApCiAgTGlmZSAgICAgICAgIEZsb2F0PyBAZGIuUmVhbAogIE1heExpZmUgICAgICBGbG9hdD8gQGRiLlJlYWwKICBNYW5hICAgICAgICAgRmxvYXQ/IEBkYi5SZWFsCiAgTWF4TWFuYSAgICAgIEZsb2F0PyBAZGIuUmVhbAogIE1hcE51bWJlciAgICBJbnQ/ICAgQGRiLlNtYWxsSW50CiAgTWFwUG9zWCAgICAgIEludD8gICBAZGIuU21hbGxJbnQKICBNYXBQb3NZICAgICAgSW50PyAgIEBkYi5TbWFsbEludAogIFF1ZXN0ICAgICAgICBCeXRlcz8gQGRiLlZhckJpbmFyeSg1MCkKICBEYlZlcnNpb24gICAgSW50PyAgIEBkYi5UaW55SW50CiAgRWZmZWN0TGlzdCAgIEJ5dGVzPyBAZGIuVmFyQmluYXJ5KDIwOCkKfQoKbW9kZWwgRXZlbnRMZW9UaGVIZWxwZXIgewogIE5hbWUgICBTdHJpbmcgQGlkKG1hcDogIlBLX0V2ZW50TGVvVGhlSGVscGVyIikgQGRiLlZhckNoYXIoMTApCiAgU3RhdHVzIEludD8KfQoKbW9kZWwgRXZlbnRTYW50YUNsYXVzIHsKICBOYW1lICAgU3RyaW5nIEBpZChtYXA6ICJQS19FdmVudFNhbnRhQ2xhdXMiKSBAZGIuVmFyQ2hhcigxMCkKICBTdGF0dXMgSW50Pwp9CgovLy8gVGhlIHVuZGVybHlpbmcgdGFibGUgZG9lcyBub3QgY29udGFpbiBhIHZhbGlkIHVuaXF1ZSBpZGVudGlmaWVyIGFuZCBjYW4gdGhlcmVmb3JlIGN1cnJlbnRseSBub3QgYmUgaGFuZGxlZCBieSBQcmlzbWEgQ2xpZW50Lgptb2RlbCBFeHRXYXJlaG91c2UgewogIEFjY291bnRJRCBTdHJpbmcgQGRiLlZhckNoYXIoMTApCiAgSXRlbXMgICAgIEJ5dGVzPyBAZGIuVmFyQmluYXJ5KDM4NDApCiAgTW9uZXkgICAgIEludD8KICBOdW1iZXIgICAgSW50PwoKICBAQGlnbm9yZQp9Cgptb2RlbCBHYW1lU2VydmVySW5mbyB7CiAgTnVtYmVyICAgICAgIEludCAgQGlkKGNsdXN0ZXJlZDogZmFsc2UsIG1hcDogIlBLX0dhbWVTZXJ2ZXJJbmZvIikgQGRlZmF1bHQoMCwgbWFwOiAiREZfR2FtZVNlcnZlckluZm9fTnVtYmVyIikKICBJdGVtQ291bnQgICAgSW50CiAgWmVuQ291bnQgICAgIEludD8gQGRlZmF1bHQoMCwgbWFwOiAiREZfR2FtZVNlcnZlckluZm9fWmVuQ291bnQiKQogIEFjZUl0ZW1Db3VudCBJbnQ/Cn0KCm1vZGVsIEdlbnNfUmFuayB7CiAgTmFtZSAgICAgICAgIFN0cmluZyBAaWQobWFwOiAiUEtfR2Vuc19SYW5rIikgQGRiLlZhckNoYXIoMTApCiAgRmFtaWx5ICAgICAgIEludD8KICBDb250cmlidXRpb24gSW50Pwp9Cgptb2RlbCBHZW5zX1Jld2FyZCB7CiAgTmFtZSAgIFN0cmluZyBAaWQobWFwOiAiUEtfR2Vuc19SZXdhcmQiKSBAZGIuVmFyQ2hhcigxMCkKICBSYW5rICAgSW50PwogIFN0YXR1cyBJbnQ/Cn0KCm1vZGVsIEd1aWxkIHsKICBHX05hbWUgICAgICBTdHJpbmcgIEBpZChtYXA6ICJQS19HdWlsZCIpIEBkYi5WYXJDaGFyKDgpCiAgR19NYXJrICAgICAgQnl0ZXM/ICBAZGIuVmFyQmluYXJ5KDMyKQogIEdfU2NvcmUgICAgIEludD8gICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfR3VpbGRfR19TY29yZSIpCiAgR19NYXN0ZXIgICAgU3RyaW5nPyBAZGIuVmFyQ2hhcigxMCkKICBHX0NvdW50ICAgICBJbnQ/CiAgR19Ob3RpY2UgICAgU3RyaW5nPyBAZGIuVmFyQ2hhcig2MCkKICBOdW1iZXIgICAgICBJbnQgICAgIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBHX1R5cGUgICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19HdWlsZF9fR19UeXBlX18wRDdBMDI4NiIpCiAgR19SaXZhbCAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fR3VpbGRfX0dfUml2YWxfXzBFNkUyNkJGIikKICBHX1VuaW9uICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX19HdWlsZF9fR19Vbmlvbl9fMEY2MjRBRjgiKQogIE1lbWJlckNvdW50IEludD8gICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX0d1aWxkX19NZW1iZXJDb3VfXzEwNTY2RjMxIikKCiAgQEBpbmRleChbR19SaXZhbF0sIG1hcDogIklEWF9HVUlMRF9HX1JJVkFMIikKICBAQGluZGV4KFtHX1VuaW9uXSwgbWFwOiAiSURYX0dVSUxEX0dfVU5JT04iKQogIEBAaW5kZXgoW051bWJlcl0sIG1hcDogIklEWF9HVUlMRF9OVU1CRVIiKQp9Cgptb2RlbCBHdWlsZE1lbWJlciB7CiAgTmFtZSAgICAgU3RyaW5nIEBpZChtYXA6ICJQS19HdWlsZE1lbWJlciIpIEBkYi5WYXJDaGFyKDEwKQogIEdfTmFtZSAgIFN0cmluZyBAZGIuVmFyQ2hhcig4KQogIEdfTGV2ZWwgIEludD8gICBAZGIuVGlueUludAogIEdfU3RhdHVzIEludCAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fR3VpbGRNZW1iX19HX1N0YV9fMDFEMzQ1QjAiKSBAZGIuVGlueUludAoKICBAQGluZGV4KFtHX05hbWVdLCBtYXA6ICJJWF9HdWlsZE1lbWJlciIpCn0KCm1vZGVsIEhlbHBlckRhdGEgewogIE5hbWUgU3RyaW5nIEBpZChtYXA6ICJQS19IZWxwZXJEYXRhIikgQGRiLlZhckNoYXIoMTApCiAgRGF0YSBCeXRlcz8gQGRiLkJpbmFyeSgyNTYpCn0KCi8vLyBUaGUgdW5kZXJseWluZyB0YWJsZSBkb2VzIG5vdCBjb250YWluIGEgdmFsaWQgdW5pcXVlIGlkZW50aWZpZXIgYW5kIGNhbiB0aGVyZWZvcmUgY3VycmVudGx5IG5vdCBiZSBoYW5kbGVkIGJ5IFByaXNtYSBDbGllbnQuCm1vZGVsIEl0ZW1Mb2cgewogIFNFUSAgICAgIEludCAgICAgICBAZGVmYXVsdChhdXRvaW5jcmVtZW50KCkpCiAgQWNjICAgICAgU3RyaW5nPyAgIEBkYi5WYXJDaGFyKDEwKQogIE5hbWUgICAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcigxMCkKICBJdGVtQ29kZSBCeXRlcz8gICAgQGRiLlZhckJpbmFyeSgzMikKICBTTiAgICAgICBJbnQ/CiAgaU5hbWUgICAgU3RyaW5nPyAgIEBkYi5WYXJDaGFyKDUwKQogIGlMdmwgICAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcig1MCkKICBpU2tpbGwgICBJbnQ/ICAgICAgQGRiLlNtYWxsSW50CiAgaUx1Y2sgICAgSW50PyAgICAgIEBkYi5TbWFsbEludAogIGlFeHQgICAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcig1MDApCiAgaVNldCAgICAgSW50PyAgICAgIEBkYi5TbWFsbEludAogIGkzODAgICAgIEludD8gICAgICBAZGIuU21hbGxJbnQKICBpSmggICAgICBJbnQ/ICAgICAgQGRiLlNtYWxsSW50CiAgU2VudERhdGUgRGF0ZVRpbWU/IEBkZWZhdWx0KG5vdygpLCBtYXA6ICJERl9fSXRlbUxvZ19fU2VudERhdF9fNTQwQzdCMDAiKSBAZGIuU21hbGxEYXRlVGltZQoKICBAQGlnbm9yZQp9Cgptb2RlbCBMdWNreUNvaW4gewogIEFjY291bnRJRCBTdHJpbmcgQGlkKG1hcDogIlBLX0x1Y2t5Q29pbiIpIEBkYi5WYXJDaGFyKDEwKQogIEx1Y2t5Q29pbiBJbnQ/Cn0KCm1vZGVsIEx1Y2t5SXRlbSB7CiAgSXRlbVNlcmlhbCAgICAgIEludCAgQGlkKG1hcDogIlBLX0x1Y2t5SXRlbSIpCiAgRHVyYWJpbGl0eVNtYWxsIEludD8KfQoKbW9kZWwgTUVNQl9TVEFUIHsKICBtZW1iX19faWQgICAgU3RyaW5nICAgIEBpZChtYXA6ICJQS19NRU1CX1NUQVQiKSBAZGIuVmFyQ2hhcigxMCkKICBDb25uZWN0U3RhdCAgSW50PyAgICAgIEBkYi5UaW55SW50CiAgU2VydmVyTmFtZSAgIFN0cmluZz8gICBAZGIuVmFyQ2hhcig1MCkKICBJUCAgICAgICAgICAgU3RyaW5nPyAgIEBkYi5WYXJDaGFyKDE1KQogIENvbm5lY3RUTSAgICBEYXRlVGltZT8gQGRiLlNtYWxsRGF0ZVRpbWUKICBEaXNDb25uZWN0VE0gRGF0ZVRpbWU/IEBkYi5TbWFsbERhdGVUaW1lCiAgT25saW5lSG91cnMgIEludD8gICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9fTUVNQl9TVEFUX19Pbmxpbl9fMjI3NTFGNkMiKQogIEhXSUQgICAgICAgICBTdHJpbmc/ICAgQGRiLlZhckNoYXIoNTApCn0KCm1vZGVsIE1hc3RlclNraWxsVHJlZSB7CiAgTmFtZSAgICAgICAgICAgICBTdHJpbmcgIEBpZChtYXA6ICJQS19NYXN0ZXJTa2lsbFRyZWUiKSBAZGIuVmFyQ2hhcig1MCkKICBNYXN0ZXJMZXZlbCAgICAgIEludD8KICBNYXN0ZXJQb2ludCAgICAgIEludD8KICBNYXN0ZXJFeHBlcmllbmNlIEJpZ0ludD8KICBNYXN0ZXJTa2lsbCAgICAgIEJ5dGVzPyAgQGRiLlZhckJpbmFyeSgxODApCn0KCm1vZGVsIE11Q2FzdGxlX0RBVEEgewogIE1BUF9TVlJfR1JPVVAgICAgICAgICAgSW50ICAgICAgQGlkKG1hcDogIlBLX011Q2FzdGxlX0RBVEEiKQogIFNJRUdFX1NUQVJUX0RBVEUgICAgICAgRGF0ZVRpbWUgQGRiLkRhdGVUaW1lCiAgU0lFR0VfRU5EX0RBVEUgICAgICAgICBEYXRlVGltZSBAZGIuRGF0ZVRpbWUKICBTSUVHRV9HVUlMRExJU1RfU0VUVEVEIEJvb2xlYW4KICBTSUVHRV9FTkRFRCAgICAgICAgICAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlLCBtYXA6ICJERl9NdUNhc3RsZV9EYXRhX1NFSUdFX0VOREVEIikKICBDQVNUTEVfT0NDVVBZICAgICAgICAgIEJvb2xlYW4gIEBkZWZhdWx0KGZhbHNlLCBtYXA6ICJERl9NdUNhc3RsZV9EYXRhX0NBU1RMRV9PQ0NVUFkiKQogIE9XTkVSX0dVSUxEICAgICAgICAgICAgU3RyaW5nICAgQGRiLlZhckNoYXIoOCkKICBNT05FWSAgICAgICAgICAgICAgICAgIEZsb2F0ICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX011Q2FzdGxlX0RhdGFfTU9ORVkiKSBAZGIuTW9uZXkKICBUQVhfUkFURV9DSEFPUyAgICAgICAgIEludCAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX011Q2FzdGxlX0RhdGFfVEFYX1JBVEUiKQogIFRBWF9SQVRFX1NUT1JFICAgICAgICAgSW50ICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTXVDYXN0bGVfREFUQV9UQVhfUkFURV9TVE9SRSIpCiAgVEFYX0hVTlRfWk9ORSAgICAgICAgICBJbnQgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9NdUNhc3RsZV9EQVRBX1RBWF9IVU5UX1pPTkUiKQp9CgovLy8gVGhlIHVuZGVybHlpbmcgdGFibGUgZG9lcyBub3QgY29udGFpbiBhIHZhbGlkIHVuaXF1ZSBpZGVudGlmaWVyIGFuZCBjYW4gdGhlcmVmb3JlIGN1cnJlbnRseSBub3QgYmUgaGFuZGxlZCBieSBQcmlzbWEgQ2xpZW50Lgptb2RlbCBNdUNhc3RsZV9NT05FWV9TVEFUSVNUSUNTIHsKICBNQVBfU1ZSX0dST1VQIEludAogIExPR19EQVRFICAgICAgRGF0ZVRpbWUgQGRiLkRhdGVUaW1lCiAgTU9ORVlfQ0hBTkdFICBGbG9hdCAgICBAZGIuTW9uZXkKCiAgQEBpbmRleChbTUFQX1NWUl9HUk9VUF0sIG1hcDogIklYX011Q2FzdGxlX01PTkVZX1NUQVRJU1RJQ1MiLCBjbHVzdGVyZWQ6IHRydWUpCiAgQEBpbmRleChbTUFQX1NWUl9HUk9VUCwgTE9HX0RBVEVdLCBtYXA6ICJJWF9NdUNhc3RsZV9NT05FWV9TVEFUSVNUSUNTX05DIikKICBAQGlnbm9yZQp9Cgptb2RlbCBNdUNhc3RsZV9OUEMgewogIE1BUF9TVlJfR1JPVVAgIEludAogIE5QQ19OVU1CRVIgICAgIEludAogIE5QQ19JTkRFWCAgICAgIEludAogIE5QQ19ERl9MRVZFTCAgIEludAogIE5QQ19SR19MRVZFTCAgIEludAogIE5QQ19NQVhIUCAgICAgIEludAogIE5QQ19IUCAgICAgICAgIEludAogIE5QQ19YICAgICAgICAgIEludCAgICAgIEBkYi5UaW55SW50CiAgTlBDX1kgICAgICAgICAgSW50ICAgICAgQGRiLlRpbnlJbnQKICBOUENfRElSICAgICAgICBJbnQgICAgICBAZGIuVGlueUludAogIE5QQ19DUkVBVEVEQVRFIERhdGVUaW1lIEBkYi5EYXRlVGltZQoKICBAQHVuaXF1ZShbTUFQX1NWUl9HUk9VUCwgTlBDX05VTUJFUiwgTlBDX0lOREVYXSwgbWFwOiAiSVhfTlBDX1NVQktFWSIpCiAgQEBpbmRleChbTUFQX1NWUl9HUk9VUF0sIG1hcDogIklYX05QQ19QSyIsIGNsdXN0ZXJlZDogdHJ1ZSkKfQoKbW9kZWwgTXVDYXN0bGVfUkVHX1NJRUdFIHsKICBNQVBfU1ZSX0dST1VQICAgSW50CiAgUkVHX1NJRUdFX0dVSUxEIFN0cmluZyBAZGIuVmFyQ2hhcig4KQogIFJFR19NQVJLUyAgICAgICBJbnQKICBJU19HSVZFVVAgICAgICAgSW50ICAgIEBkYi5UaW55SW50CiAgU0VRX05VTSAgICAgICAgIEludAoKICBAQHVuaXF1ZShbTUFQX1NWUl9HUk9VUCwgUkVHX1NJRUdFX0dVSUxEXSwgbWFwOiAiSVhfQVRUQUNLX0dVSUxEX1NVQktFWSIpCiAgQEBpbmRleChbTUFQX1NWUl9HUk9VUF0sIG1hcDogIklYX0FUVEFDS19HVUlMRF9LRVkiLCBjbHVzdGVyZWQ6IHRydWUpCn0KCi8vLyBUaGUgdW5kZXJseWluZyB0YWJsZSBkb2VzIG5vdCBjb250YWluIGEgdmFsaWQgdW5pcXVlIGlkZW50aWZpZXIgYW5kIGNhbiB0aGVyZWZvcmUgY3VycmVudGx5IG5vdCBiZSBoYW5kbGVkIGJ5IFByaXNtYSBDbGllbnQuCm1vZGVsIE11Q2FzdGxlX1NJRUdFX0dVSUxETElTVCB7CiAgTUFQX1NWUl9HUk9VUCAgSW50CiAgR1VJTERfTkFNRSAgICAgU3RyaW5nICBAZGIuVmFyQ2hhcig4KQogIEdVSUxEX0lEICAgICAgIEludAogIEdVSUxEX0lOVk9MVkVEIEJvb2xlYW4KICBHVUlMRF9TQ09SRSAgICBJbnQKCiAgQEBpbmRleChbTUFQX1NWUl9HUk9VUF0sIG1hcDogIklYX011Q2FzdGxlX1NJRUdFX0dVSUxETElTVCIsIGNsdXN0ZXJlZDogdHJ1ZSkKICBAQGlnbm9yZQp9CgovLy8gVGhlIHVuZGVybHlpbmcgdGFibGUgZG9lcyBub3QgY29udGFpbiBhIHZhbGlkIHVuaXF1ZSBpZGVudGlmaWVyIGFuZCBjYW4gdGhlcmVmb3JlIGN1cnJlbnRseSBub3QgYmUgaGFuZGxlZCBieSBQcmlzbWEgQ2xpZW50Lgptb2RlbCBOUENfUkVTQ1VFX0lURU5TIHsKICBJRCAgICAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQogIEFjY291bnQgICAgICAgIFN0cmluZyAgICBAZGIuVmFyQ2hhcigxMCkKICBJdGVtSW5kZXggICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19JdGVtSW5kZXgiKQogIExldmVsICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9OUENfUkVTQ1VFX0lURU5TX0xldmVsIikKICBPcHRpb24xICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19PcHRpb24xIikKICBPcHRpb24yICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19PcHRpb24yIikKICBPcHRpb24zICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19PcHRpb24zIikKICBFeGMgICAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19FeGMiKQogIEFuY2llbnQgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9OUENfUkVTQ1VFX0lURU5TX0FuY2llbnQiKQogIEpvSCAgICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9OUENfUkVTQ1VFX0lURU5TX0pvSCIpCiAgU29ja0JvbnVzICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX05QQ19SRVNDVUVfSVRFTlNfU29ja0JvbnVzIikKICBTb2NrMSAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19Tb2NrMSIpCiAgU29jazIgICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX05QQ19SRVNDVUVfSVRFTlNfU29jazIiKQogIFNvY2szICAgICAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9OUENfUkVTQ1VFX0lURU5TX1NvY2szIikKICBTb2NrNCAgICAgICAgICBJbnQgICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfTlBDX1JFU0NVRV9JVEVOU19Tb2NrNCIpCiAgU29jazUgICAgICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX05QQ19SRVNDVUVfSVRFTlNfU29jazUiKQogIERlbGl2ZXJlZCAgICAgIEludCAgICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9OUENfUkVTQ1VFX0lURU5TX0RlbGl2ZXJlZCIpCiAgSXRlbVRpbWVFeHBpcmUgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX05QQ19SRVNDVUVfSVRFTlNfSXRlbVRpbWVFeHBpcmUiKQogIFRpbWVFeHBpcmUgICAgIERhdGVUaW1lICBAZGIuRGF0ZVRpbWUKICBUaW1lRGVsaXZlcmVkICBEYXRlVGltZT8gQGRiLkRhdGVUaW1lCgogIEBAaWdub3JlCn0KCm1vZGVsIE9wdGlvbkRhdGEgewogIE5hbWUgICAgICAgU3RyaW5nIEBpZChtYXA6ICJQS19PcHRpb25EYXRhIikgQGRiLlZhckNoYXIoMTApCiAgU2tpbGxLZXkgICBCeXRlcz8gQGRiLkJpbmFyeSgyMCkKICBHYW1lT3B0aW9uIEludD8gICBAZGIuVGlueUludAogIFFrZXkgICAgICAgSW50PyAgIEBkYi5UaW55SW50CiAgV2tleSAgICAgICBJbnQ/ICAgQGRiLlRpbnlJbnQKICBFa2V5ICAgICAgIEludD8gICBAZGIuVGlueUludAogIENoYXRXaW5kb3cgSW50PyAgIEBkYi5UaW55SW50CiAgUmtleSAgICAgICBJbnQ/ICAgQGRiLlRpbnlJbnQKICBRV0VSTGV2ZWwgIEludD8KfQoKLy8vIFRoZSB1bmRlcmx5aW5nIHRhYmxlIGRvZXMgbm90IGNvbnRhaW4gYSB2YWxpZCB1bmlxdWUgaWRlbnRpZmllciBhbmQgY2FuIHRoZXJlZm9yZSBjdXJyZW50bHkgbm90IGJlIGhhbmRsZWQgYnkgUHJpc21hIENsaWVudC4KbW9kZWwgUVVFU1RfU1lTVEVNIHsKICBBY2NvdW50SUQgICAgICAgICAgIFN0cmluZyAgQGRiLlZhckNoYXIoMTApCiAgTmFtZSAgICAgICAgICAgICAgICBTdHJpbmc/IEBkYi5WYXJDaGFyKDEwKQogIFF1ZXN0SWRlbnRpZmljYXRpb24gSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fUXVlc3RJZGVudGlmaWNhdGlvbiIpCiAgS2lsbHMgICAgICAgICAgICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1FVRVNUX1NZU1RFTV9SZWdpc3RlcjEiKQogIEtpbGxzTW9uc3RlcjEgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9UYWJsZV8xX1JlZ2lzdGVyMTEiKQogIEtpbGxzTW9uc3RlcjIgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9UYWJsZV8xX1JlZ2lzdGVyMTFfMSIpCiAgS2lsbHNNb25zdGVyMyAgICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RhYmxlXzFfUmVnaXN0ZXIxMV8yIikKICBLaWxsc01vbnN0ZXI0ICAgICAgIEludCAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfVGFibGVfMV9SZWdpc3RlcjExXzMiKQogIEtpbGxzTW9uc3RlcjUgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9UYWJsZV8xX1JlZ2lzdGVyMTFfNCIpCiAgS2lsbHNNb25zdGVyNiAgICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RhYmxlXzFfUmVnaXN0ZXIxMV81IikKICBLaWxsc01vbnN0ZXI3ICAgICAgIEludCAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfVGFibGVfMV9SZWdpc3RlcjExXzYiKQogIEtpbGxzTW9uc3RlcjggICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9UYWJsZV8xX1JlZ2lzdGVyMTFfNyIpCiAgS2lsbHNNb25zdGVyOSAgICAgICBJbnQgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RhYmxlXzFfUmVnaXN0ZXIxMV84IikKICBGaW5pc2hlZCAgICAgICAgICAgIEludCAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfUVVFU1RfU1lTVEVNX0ZpbmlzaGVkIikKCiAgQEBpZ25vcmUKfQoKLy8vIFRoZSB1bmRlcmx5aW5nIHRhYmxlIGRvZXMgbm90IGNvbnRhaW4gYSB2YWxpZCB1bmlxdWUgaWRlbnRpZmllciBhbmQgY2FuIHRoZXJlZm9yZSBjdXJyZW50bHkgbm90IGJlIGhhbmRsZWQgYnkgUHJpc21hIENsaWVudC4KbW9kZWwgUVVFU1RfU1lTVEVNX05QQyB7CiAgQWNjb3VudElEICAgICAgICAgICBTdHJpbmcgIEBkYi5WYXJDaGFyKDEwKQogIE5hbWUgICAgICAgICAgICAgICAgU3RyaW5nPyBAZGIuVmFyQ2hhcigxMCkKICBRdWVzdElkZW50aWZpY2F0aW9uIEludCAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfUVVFU1RfU1lTVEVNX05QQ19RdWVzdElkZW50aWZpY2F0aW9uIikKICBLaWxscyAgICAgICAgICAgICAgIEludCAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfUVVFU1RfU1lTVEVNX05QQ19SZWdpc3RlcjEiKQogIEtpbGxzTW9uc3RlcjEgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjEiKQogIEtpbGxzTW9uc3RlcjIgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjIiKQogIEtpbGxzTW9uc3RlcjMgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjMiKQogIEtpbGxzTW9uc3RlcjQgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjQiKQogIEtpbGxzTW9uc3RlcjUgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjUiKQogIEtpbGxzTW9uc3RlcjYgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjYiKQogIEtpbGxzTW9uc3RlcjcgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjciKQogIEtpbGxzTW9uc3RlcjggICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjgiKQogIEtpbGxzTW9uc3RlcjkgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0tpbGxzTW9uc3RlcjkiKQogIEZpbmlzaGVkICAgICAgICAgICAgSW50ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9RVUVTVF9TWVNURU1fTlBDX0ZpbmlzaGVkIikKCiAgQEBpZ25vcmUKfQoKbW9kZWwgUXVlc3RLaWxsQ291bnQgewogIE5hbWUgICAgICAgICAgU3RyaW5nIEBpZChtYXA6ICJQS19RdWVzdEtpbGxDb3VudCIpIEBkYi5WYXJDaGFyKDEwKQogIFF1ZXN0SW5kZXggICAgSW50PwogIE1vbnN0ZXJDbGFzczEgSW50PwogIEtpbGxDb3VudDEgICAgSW50PwogIE1vbnN0ZXJDbGFzczIgSW50PwogIEtpbGxDb3VudDIgICAgSW50PwogIE1vbnN0ZXJDbGFzczMgSW50PwogIEtpbGxDb3VudDMgICAgSW50PwogIE1vbnN0ZXJDbGFzczQgSW50PwogIEtpbGxDb3VudDQgICAgSW50PwogIE1vbnN0ZXJDbGFzczUgSW50PwogIEtpbGxDb3VudDUgICAgSW50Pwp9Cgptb2RlbCBRdWVzdFdvcmxkIHsKICBOYW1lICAgICAgICAgICBTdHJpbmcgQGlkKG1hcDogIlBLX1F1ZXN0V29ybGQiKSBAZGIuVmFyQ2hhcigxMCkKICBRdWVzdFdvcmxkTGlzdCBCeXRlcz8gQGRiLlZhckJpbmFyeSg0MDApCn0KCm1vZGVsIFJhbmtpbmdCbG9vZENhc3RsZSB7CiAgTmFtZSAgU3RyaW5nIEBpZChtYXA6ICJQS19SYW5raW5nQmxvb2RDYXN0bGUiKSBAZGIuVmFyQ2hhcigxMCkKICBTY29yZSBJbnQ/Cn0KCm1vZGVsIFJhbmtpbmdDaGFvc0Nhc3RsZSB7CiAgTmFtZSAgU3RyaW5nIEBpZChtYXA6ICJQS19SYW5raW5nQ2hhb3NDYXN0bGUiKSBAZGIuVmFyQ2hhcigxMCkKICBTY29yZSBJbnQ/Cn0KCm1vZGVsIFJhbmtpbmdEZXZpbFNxdWFyZSB7CiAgTmFtZSAgU3RyaW5nIEBpZChtYXA6ICJQS19SYW5raW5nRGV2aWxTcXVhcmUiKSBAZGIuVmFyQ2hhcigxMCkKICBTY29yZSBJbnQ/Cn0KCm1vZGVsIFJhbmtpbmdEdWVsIHsKICBOYW1lICAgICAgU3RyaW5nIEBpZChtYXA6ICJQS19SYW5raW5nRHVlbCIpIEBkYi5WYXJDaGFyKDEwKQogIFdpblNjb3JlICBJbnQ/CiAgTG9zZVNjb3JlIEludD8KfQoKbW9kZWwgUmFua2luZ0lsbHVzaW9uVGVtcGxlIHsKICBOYW1lICBTdHJpbmcgQGlkKG1hcDogIlBLX1JhbmtpbmdJbGx1c2lvblRlbXBsZSIpIEBkYi5WYXJDaGFyKDEwKQogIFNjb3JlIEludD8KfQoKLy8vIFRoZSB1bmRlcmx5aW5nIHRhYmxlIGRvZXMgbm90IGNvbnRhaW4gYSB2YWxpZCB1bmlxdWUgaWRlbnRpZmllciBhbmQgY2FuIHRoZXJlZm9yZSBjdXJyZW50bHkgbm90IGJlIGhhbmRsZWQgYnkgUHJpc21hIENsaWVudC4KbW9kZWwgVFJBREVfWCB7CiAgYWNjb3VudCAgICBTdHJpbmcgICAgQGRiLk5WYXJDaGFyKDEwKQogIG5hbWUgICAgICAgU3RyaW5nICAgIEBkYi5OVmFyQ2hhcigxMCkKICBpdGVtcyAgICAgIEJ5dGVzPyAgICBAZGIuVmFyQmluYXJ5KDE5MjApCiAgdGFyZ2V0bmFtZSBTdHJpbmc/ICAgQGRiLk5WYXJDaGFyKDEwKQogIHN0YXRlICAgICAgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RSQURFX1hfc3RhdGUiKQogIGRhdGUgICAgICAgRGF0ZVRpbWU/IEBkYi5EYXRlVGltZQoKICBAQGlnbm9yZQp9Cgptb2RlbCBUX0NHdWlkIHsKICBHVUlEIEludCAgICBAaWQobWFwOiAiUEtfVF9DR3VpZCIpIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKICBOYW1lIFN0cmluZyBAZGIuVmFyQ2hhcigxMCkKCiAgQEBpbmRleChbTmFtZV0sIG1hcDogIklYX1RfQ0d1aWRfTmFtZSIpCn0KCi8vLyBUaGUgdW5kZXJseWluZyB0YWJsZSBkb2VzIG5vdCBjb250YWluIGEgdmFsaWQgdW5pcXVlIGlkZW50aWZpZXIgYW5kIGNhbiB0aGVyZWZvcmUgY3VycmVudGx5IG5vdCBiZSBoYW5kbGVkIGJ5IFByaXNtYSBDbGllbnQuCm1vZGVsIFRfRnJpZW5kTGlzdCB7CiAgR1VJRCAgICAgICBJbnQKICBGcmllbmRHdWlkIEludD8KICBGcmllbmROYW1lIFN0cmluZz8gQGRiLlZhckNoYXIoMTApCiAgRGVsICAgICAgICBJbnQ/ICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RfRnJpZW5kTGlzdF9EZWwiKSBAZGIuVGlueUludAoKICBAQGluZGV4KFtHVUlELCBGcmllbmRHdWlkXSwgbWFwOiAiSVhfVF9GcmllbmRMaXN0IikKICBAQGlnbm9yZQp9Cgptb2RlbCBUX0ZyaWVuZE1haWwgewogIE1lbW9JbmRleCAgSW50ICAgICAgQGRlZmF1bHQoMTAsIG1hcDogIkRGX1RfRnJpZW5kTWVtb19NZW1vSW5kZXgiKQogIEdVSUQgICAgICAgSW50CiAgRnJpZW5kTmFtZSBTdHJpbmc/ICBAZGIuVmFyQ2hhcigxMCkKICB3RGF0ZSAgICAgIERhdGVUaW1lIEBkZWZhdWx0KG5vdygpLCBtYXA6ICJERl9UX0ZyaWVuZE1lbW9fd0RhdGUiKSBAZGIuU21hbGxEYXRlVGltZQogIFN1YmplY3QgICAgU3RyaW5nPyAgQGRiLlZhckNoYXIoNTApCiAgYlJlYWQgICAgICBCb29sZWFuICBAZGVmYXVsdChmYWxzZSwgbWFwOiAiREZfVF9GcmllbmRNZW1vX01lbW9SZWFkIikKICBNZW1vICAgICAgIEJ5dGVzPyAgIEBkYi5WYXJCaW5hcnkoMTAwMCkKICBQaG90byAgICAgIEJ5dGVzPyAgIEBkYi5CaW5hcnkoMTgpCiAgRGlyICAgICAgICBJbnQ/ICAgICBAZGVmYXVsdCgwLCBtYXA6ICJERl9UX0ZyaWVuZE1lbW9fRGlyIikgQGRiLlRpbnlJbnQKICBBY3QgICAgICAgIEludD8gICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX1RfRnJpZW5kTWVtb19BY3Rpb24iKSBAZGIuVGlueUludAoKICBAQGlkKFtHVUlELCBNZW1vSW5kZXhdLCBtYXA6ICJQS19UX0ZyaWVuZE1lbW8iKQp9Cgptb2RlbCBUX0ZyaWVuZE1haW4gewogIEdVSUQgICAgICAgIEludCAgICBAaWQobWFwOiAiUEtfVF9GcmllbmRNYWluIikKICBOYW1lICAgICAgICBTdHJpbmcgQGRiLlZhckNoYXIoMTApCiAgRnJpZW5kQ291bnQgSW50PyAgIEBkYi5UaW55SW50CiAgTWVtb0NvdW50ICAgSW50PyAgIEBkZWZhdWx0KDEwLCBtYXA6ICJERl9UX0ZyaWVuZE1haW5fTWVtb0NvdW50IikKICBNZW1vVG90YWwgICBJbnQ/ICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfVF9GcmllbmRNYWluX01lbW9Ub3RhbCIpCgogIEBAaW5kZXgoW05hbWVdLCBtYXA6ICJJWF9UX0ZyaWVuZE1haW4iKQp9Cgptb2RlbCBUX1BldEl0ZW1fSW5mbyB7CiAgSXRlbVNlcmlhbCBJbnQgIEBpZChtYXA6ICJQS19UX1BldF9JbmZvIikKICBQZXRfTGV2ZWwgIEludD8gQGRlZmF1bHQoMCwgbWFwOiAiREZfVF9QZXRfSW5mb19QZXRfTGV2ZWwiKSBAZGIuU21hbGxJbnQKICBQZXRfRXhwICAgIEludD8gQGRlZmF1bHQoMCwgbWFwOiAiREZfVF9QZXRfSW5mb19QZXRfRXhwIikKfQoKLy8vIFRoZSB1bmRlcmx5aW5nIHRhYmxlIGRvZXMgbm90IGNvbnRhaW4gYSB2YWxpZCB1bmlxdWUgaWRlbnRpZmllciBhbmQgY2FuIHRoZXJlZm9yZSBjdXJyZW50bHkgbm90IGJlIGhhbmRsZWQgYnkgUHJpc21hIENsaWVudC4KbW9kZWwgVF9XYWl0RnJpZW5kIHsKICBHVUlEICAgICAgIEludAogIEZyaWVuZEd1aWQgSW50CiAgRnJpZW5kTmFtZSBTdHJpbmcgQGRiLlZhckNoYXIoMTApCgogIEBAaW5kZXgoW0dVSURdLCBtYXA6ICJJWF9UX1dhaXRGcmllbmQiKQogIEBAaWdub3JlCn0KCi8vLyBUaGUgdW5kZXJseWluZyB0YWJsZSBkb2VzIG5vdCBjb250YWluIGEgdmFsaWQgdW5pcXVlIGlkZW50aWZpZXIgYW5kIGNhbiB0aGVyZWZvcmUgY3VycmVudGx5IG5vdCBiZSBoYW5kbGVkIGJ5IFByaXNtYSBDbGllbnQuCm1vZGVsIFdaX0NXX0lORk8gewogIE1BUF9TVlJfR1JPVVAgIEludD8KICBDUllXT0xGX09DQ1VGWSBJbnQ/CiAgQ1JZV09MRl9TVEFURSAgSW50PwoKICBAQGlnbm9yZQp9Cgptb2RlbCB3YXJlaG91c2UgewogIEFjY291bnRJRCAgIFN0cmluZyAgICBAaWQobWFwOiAiUEtfd2FyZWhvdXNlIikgQGRiLlZhckNoYXIoMTApCiAgSXRlbXMgICAgICAgQnl0ZXM/ICAgIEBkYi5WYXJCaW5hcnkoMzg0MCkKICBNb25leSAgICAgICBJbnQ/ICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfd2FyZWhvdXNlX01vbmV5IikKICBFbmRVc2VEYXRlICBEYXRlVGltZT8gQGRiLlNtYWxsRGF0ZVRpbWUKICBEYlZlcnNpb24gICBJbnQ/ICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX3dhcmVob3VzZV9fRGJWZXJfXzY5MDc5N0U2IikgQGRiLlRpbnlJbnQKICBwdyAgICAgICAgICBJbnQ/ICAgICAgQGRlZmF1bHQoMCwgbWFwOiAiREZfX3dhcmVob3VzZV9fcHdfXzY5RkJCQzFGIikgQGRiLlNtYWxsSW50CiAgVmF1bHRDb3VudHMgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX193YXJlaG91c2VfX1ZhdWx0X183ODQ5REI3NiIpCiAgTGFzdFZhdWx0SUQgSW50ICAgICAgIEBkZWZhdWx0KDAsIG1hcDogIkRGX193YXJlaG91c2VfX0xhc3RWX183OTNERkZBRiIpCn0K",
+  "inlineSchemaHash": "d16d47b66170ee777e0f5b072b7b317dde9550e76c2e59ba96001ff0ebf66095"
+}
+config.dirname = '/'
+
+config.runtimeDataModel = JSON.parse("{\"models\":{\"MEMB_INFO\":{\"dbName\":null,\"fields\":[{\"name\":\"memb_guid\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"memb___id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"memb__pwd\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"memb_name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"sno__numb\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"post_code\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"addr_info\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"addr_deta\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"tel__numb\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"phon_numb\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"mail_addr\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"fpas_ques\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"fpas_answ\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"job__code\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"appl_days\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"modi_days\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"out__days\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"true_days\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"mail_chek\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"String\",\"default\":\"0\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"bloc_code\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ctl1_code\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"AccountLevel\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"AccountExpireDate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"default\":{\"name\":\"dbgenerated\",\"args\":[\"0\"]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"vip\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"cash\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"RewardPlayer\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ChaosPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"BlessPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SoulPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LifePoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"CreationPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GuardianPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GemstonePoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HarmonyPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LRefiningPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HRefiningPoints\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LockPassword\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"AccountCharacter\":{\"dbName\":null,\"fields\":[{\"name\":\"Number\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID1\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID2\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID3\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID4\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID5\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameIDC\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MoveCnt\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ExtClass\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ExtWarehouse\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID6\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID7\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID8\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID9\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameID10\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxCharacter\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":10,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"CashShopData\":{\"dbName\":null,\"fields\":[{\"name\":\"AccountID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"WCoinC\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"WCoinP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GoblinPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"CashShopInventory\":{\"dbName\":null,\"fields\":[{\"name\":\"BaseItemCode\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MainItemCode\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"AccountID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"InventoryType\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PackageMainIndex\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ProductBaseIndex\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ProductMainIndex\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"CoinValue\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ProductType\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GiftName\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GiftText\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"CashShopPeriodicItem\":{\"dbName\":null,\"fields\":[{\"name\":\"ItemSerial\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Time\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"Character\":{\"dbName\":null,\"fields\":[{\"name\":\"AccountID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"cLevel\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":1,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LevelUpPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Class\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Experience\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Strength\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Dexterity\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Vitality\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Energy\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Leadership\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Inventory\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MagicList\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Money\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Life\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxLife\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Mana\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxMana\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"BP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxBP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Shield\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxShield\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapNumber\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapPosX\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapPosY\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapDir\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PkCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PkLevel\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":3,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PkTime\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MDate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LDate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"CtlCode\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"DbVersion\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Quest\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Bytes\",\"default\":{\"name\":\"dbgenerated\",\"args\":[\"0\"]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ChatLimitTime\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"FruitPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"EffectList\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"FruitAddPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"FruitSubPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ResetCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MasterResetCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ExtInventory\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Resets\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ResetsDay\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ResetsWeek\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ResetsMonth\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MResets\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MResetsDay\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MResetsWeek\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MResetsMonth\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PKTotal\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PKDay\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PKWeek\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"PKMonth\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HeroTotal\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HeroDay\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HeroWeek\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HeroMonth\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"tradewins\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"matamata\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"duel_total\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"duel_semanal\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"duel_mensal\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"DefaultClassType\":{\"dbName\":null,\"fields\":[{\"name\":\"Class\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Level\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LevelUpPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Strength\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Dexterity\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Vitality\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Energy\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Leadership\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Inventory\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MagicList\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Life\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxLife\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Mana\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MaxMana\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Float\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapNumber\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapPosX\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MapPosY\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Quest\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"DbVersion\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"EffectList\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"EventLeoTheHelper\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Status\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"EventSantaClaus\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Status\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"GameServerInfo\":{\"dbName\":null,\"fields\":[{\"name\":\"Number\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ItemCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ZenCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"AceItemCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"Gens_Rank\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Family\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Contribution\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"Gens_Reward\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Rank\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Status\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"Guild\":{\"dbName\":null,\"fields\":[{\"name\":\"G_Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Mark\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Score\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Master\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Count\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Notice\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Number\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Type\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Rival\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Union\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MemberCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"GuildMember\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Level\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"G_Status\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"HelperData\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Data\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"LuckyCoin\":{\"dbName\":null,\"fields\":[{\"name\":\"AccountID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LuckyCoin\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"LuckyItem\":{\"dbName\":null,\"fields\":[{\"name\":\"ItemSerial\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"DurabilitySmall\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"MEMB_STAT\":{\"dbName\":null,\"fields\":[{\"name\":\"memb___id\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ConnectStat\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ServerName\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"IP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ConnectTM\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"DisConnectTM\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"OnlineHours\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"HWID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"MasterSkillTree\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MasterLevel\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MasterPoint\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MasterExperience\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"BigInt\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MasterSkill\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"MuCastle_DATA\":{\"dbName\":null,\"fields\":[{\"name\":\"MAP_SVR_GROUP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SIEGE_START_DATE\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SIEGE_END_DATE\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SIEGE_GUILDLIST_SETTED\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Boolean\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SIEGE_ENDED\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"default\":false,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"CASTLE_OCCUPY\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"default\":false,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"OWNER_GUILD\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MONEY\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Float\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"TAX_RATE_CHAOS\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"TAX_RATE_STORE\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"TAX_HUNT_ZONE\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"MuCastle_NPC\":{\"dbName\":null,\"fields\":[{\"name\":\"MAP_SVR_GROUP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_NUMBER\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_INDEX\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_DF_LEVEL\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_RG_LEVEL\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_MAXHP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_HP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_X\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_Y\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_DIR\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"NPC_CREATEDATE\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[[\"MAP_SVR_GROUP\",\"NPC_NUMBER\",\"NPC_INDEX\"]],\"uniqueIndexes\":[{\"name\":null,\"fields\":[\"MAP_SVR_GROUP\",\"NPC_NUMBER\",\"NPC_INDEX\"]}],\"isGenerated\":false},\"MuCastle_REG_SIEGE\":{\"dbName\":null,\"fields\":[{\"name\":\"MAP_SVR_GROUP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"REG_SIEGE_GUILD\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"REG_MARKS\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"IS_GIVEUP\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SEQ_NUM\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[[\"MAP_SVR_GROUP\",\"REG_SIEGE_GUILD\"]],\"uniqueIndexes\":[{\"name\":null,\"fields\":[\"MAP_SVR_GROUP\",\"REG_SIEGE_GUILD\"]}],\"isGenerated\":false},\"OptionData\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"SkillKey\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GameOption\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Qkey\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Wkey\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Ekey\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"ChatWindow\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Rkey\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"QWERLevel\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"QuestKillCount\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"QuestIndex\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MonsterClass1\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"KillCount1\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MonsterClass2\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"KillCount2\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MonsterClass3\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"KillCount3\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MonsterClass4\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"KillCount4\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MonsterClass5\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"KillCount5\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"QuestWorld\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"QuestWorldList\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RankingBloodCastle\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Score\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RankingChaosCastle\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Score\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RankingDevilSquare\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Score\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RankingDuel\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"WinScore\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LoseScore\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"RankingIllusionTemple\":{\"dbName\":null,\"fields\":[{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Score\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"T_CGuid\":{\"dbName\":null,\"fields\":[{\"name\":\"GUID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":{\"name\":\"autoincrement\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"T_FriendMail\":{\"dbName\":null,\"fields\":[{\"name\":\"MemoIndex\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":10,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"GUID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"FriendName\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"wDate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"DateTime\",\"default\":{\"name\":\"now\",\"args\":[]},\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Subject\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"bRead\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Boolean\",\"default\":false,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Memo\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Photo\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Dir\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Act\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":{\"name\":null,\"fields\":[\"GUID\",\"MemoIndex\"]},\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"T_FriendMain\":{\"dbName\":null,\"fields\":[{\"name\":\"GUID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Name\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"FriendCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MemoCount\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":10,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"MemoTotal\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"T_PetItem_Info\":{\"dbName\":null,\"fields\":[{\"name\":\"ItemSerial\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Int\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Pet_Level\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Pet_Exp\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false},\"warehouse\":{\"dbName\":null,\"fields\":[{\"name\":\"AccountID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":true,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"String\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Items\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"Bytes\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"Money\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"EndUseDate\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":false,\"type\":\"DateTime\",\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"DbVersion\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"pw\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":false,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"VaultCounts\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false},{\"name\":\"LastVaultID\",\"kind\":\"scalar\",\"isList\":false,\"isRequired\":true,\"isUnique\":false,\"isId\":false,\"isReadOnly\":false,\"hasDefaultValue\":true,\"type\":\"Int\",\"default\":0,\"isGenerated\":false,\"isUpdatedAt\":false}],\"primaryKey\":null,\"uniqueFields\":[],\"uniqueIndexes\":[],\"isGenerated\":false}},\"enums\":{},\"types\":{}}")
+defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
+
+
+config.injectableEdgeEnv = () => ({
+  parsed: {
+    DATABASE_URL: typeof globalThis !== 'undefined' && globalThis['DATABASE_URL'] || typeof process !== 'undefined' && process.env && process.env.DATABASE_URL || undefined
+  }
+})
+
+if (typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined) {
+  Debug.enable(typeof globalThis !== 'undefined' && globalThis['DEBUG'] || typeof process !== 'undefined' && process.env && process.env.DEBUG || undefined)
+}
+
+const PrismaClient = getPrismaClient(config)
+exports.PrismaClient = PrismaClient
+Object.assign(exports, Prisma)
+

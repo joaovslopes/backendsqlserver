@@ -1,0 +1,620 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model MEMB_INFO {
+  memb_guid         Int       @id(clustered: false, sort: Desc, map: "PK_MEMB_INFO_1") @default(autoincrement())
+  memb___id         String    @db.VarChar(10)
+  memb__pwd         String    @db.VarChar(10)
+  memb_name         String    @db.VarChar(10)
+  sno__numb         String    @db.Char(18)
+  post_code         String?   @db.Char(6)
+  addr_info         String?   @db.VarChar(50)
+  addr_deta         String?   @db.VarChar(50)
+  tel__numb         String?   @db.VarChar(20)
+  phon_numb         String?   @db.VarChar(15)
+  mail_addr         String?   @db.VarChar(50)
+  fpas_ques         String?   @db.VarChar(50)
+  fpas_answ         String?   @db.VarChar(50)
+  job__code         String?   @db.Char(2)
+  appl_days         DateTime? @db.DateTime
+  modi_days         DateTime? @db.DateTime
+  out__days         DateTime? @db.DateTime
+  true_days         DateTime? @db.DateTime
+  mail_chek         String?   @default("0", map: "DF_MEMB_INFO_mail_chek") @db.Char(1)
+  bloc_code         String    @db.Char(1)
+  ctl1_code         String    @db.Char(1)
+  AccountLevel      Int       @default(0, map: "DF_MEMB_INFO_AccountLevel")
+  AccountExpireDate DateTime  @default(dbgenerated("0"), map: "DF__MEMB_INFO__Accou__56E8E7AB") @db.SmallDateTime
+  vip               Int       @default(0, map: "DF__MEMB_INFO__vip__57DD0BE4")
+  cash              Int       @default(0, map: "DF__MEMB_INFO__cash__58D1301D")
+  RewardPlayer      Int       @default(0, map: "DF__MEMB_INFO__Rewar__59C55456")
+  ChaosPoints       Int       @default(0, map: "DF__MEMB_INFO__Chaos__5AB9788F")
+  BlessPoints       Int       @default(0, map: "DF__MEMB_INFO__Bless__5BAD9CC8")
+  SoulPoints        Int       @default(0, map: "DF__MEMB_INFO__SoulP__5CA1C101")
+  LifePoints        Int       @default(0, map: "DF__MEMB_INFO__LifeP__5D95E53A")
+  CreationPoints    Int       @default(0, map: "DF__MEMB_INFO__Creat__5E8A0973")
+  GuardianPoints    Int       @default(0, map: "DF__MEMB_INFO__Guard__5F7E2DAC")
+  GemstonePoints    Int       @default(0, map: "DF__MEMB_INFO__Gemst__607251E5")
+  HarmonyPoints     Int       @default(0, map: "DF__MEMB_INFO__Harmo__6166761E")
+  LRefiningPoints   Int       @default(0, map: "DF__MEMB_INFO__LRefi__625A9A57")
+  HRefiningPoints   Int       @default(0, map: "DF__MEMB_INFO__HRefi__634EBE90")
+  LockPassword      Int       @default(0, map: "DF__MEMB_INFO__LockP__0697FACD")
+
+  @@index([sno__numb(sort: Desc), memb_name(sort: Desc)], map: "IX_MEMB_DETAIL")
+  @@index([memb___id(sort: Desc)], map: "IX_MEMB_INFO_1", clustered: true)
+}
+
+
+
+model AccountCharacter {
+  Number       Int     @default(autoincrement())
+  Id           String  @id(clustered: false, map: "PK_AccountCharacter") @db.VarChar(10)
+  GameID1      String? @db.VarChar(10)
+  GameID2      String? @db.VarChar(10)
+  GameID3      String? @db.VarChar(10)
+  GameID4      String? @db.VarChar(10)
+  GameID5      String? @db.VarChar(10)
+  GameIDC      String? @db.VarChar(10)
+  MoveCnt      Int?    @default(0, map: "DF__AccountCh__MoveC__7A3223E8") @db.TinyInt
+  ExtClass     Int     @default(0, map: "df_AccountCharacter_ExtClass")
+  ExtWarehouse Int     @default(0, map: "DF__AccountCh__ExtWa__1CBC4616")
+  GameID6      String? @db.VarChar(10)
+  GameID7      String? @db.VarChar(10)
+  GameID8      String? @db.VarChar(10)
+  GameID9      String? @db.VarChar(10)
+  GameID10     String? @db.VarChar(10)
+  MaxCharacter Int     @default(10, map: "DF__AccountCh__MaxCh__1DB06A4F")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CHAOS_BOX_GENESIS {
+  Account      String    @db.NVarChar(10)
+  Name         String    @db.NVarChar(10)
+  State        Int       @default(0, map: "DF_CHAOS_BOX_GENESIS_State")
+  SelectedKey  Int       @default(0, map: "DF_CHAOS_BOX_GENESIS_SelectedKey")
+  SelectedComb Int       @default(0, map: "DF_CHAOS_BOX_GENESIS_SelectedComb")
+  Items        Bytes?    @db.VarBinary(1920)
+  LastUse      DateTime? @default(now(), map: "DF_CHAOS_BOX_GENESIS_LastUse") @db.DateTime
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model CashLog {
+  ID       Int       @default(autoincrement())
+  UserID   String?   @db.VarChar(16)
+  Amount   Float?    @db.Money
+  SentDate DateTime? @default(now(), map: "DF__CashLog__SentDat__1EA48E88") @db.SmallDateTime
+
+  @@ignore
+}
+
+model CashShopData {
+  AccountID   String @id(map: "PK_TempCashShop") @db.VarChar(10)
+  WCoinC      Int?
+  WCoinP      Int?
+  GoblinPoint Int?
+}
+
+model CashShopInventory {
+  BaseItemCode     Int     @id(map: "PK_CashShopInventory") @default(autoincrement())
+  MainItemCode     Int?
+  AccountID        String? @db.VarChar(10)
+  InventoryType    Int?
+  PackageMainIndex Int?
+  ProductBaseIndex Int?
+  ProductMainIndex Int?
+  CoinValue        Float?
+  ProductType      Int?
+  GiftName         String? @db.VarChar(10)
+  GiftText         String? @db.VarChar(200)
+}
+
+model CashShopPeriodicItem {
+  ItemSerial Int  @id(map: "PK_CashShopPeriodicItem")
+  Time       Int?
+}
+
+model Character {
+  AccountID        String    @db.VarChar(10)
+  Name             String    @id(clustered: false, map: "PK_Character") @db.VarChar(10)
+  cLevel           Int?      @default(1, map: "DF_Character_cLevel")
+  LevelUpPoint     Int?      @default(0, map: "DF_Character_LevelUpPoint")
+  Class            Int?      @db.TinyInt
+  Experience       Int?      @default(0, map: "DF_Character_Experience")
+  Strength         Int?
+  Dexterity        Int?
+  Vitality         Int?
+  Energy           Int?
+  Leadership       Int?      @default(0, map: "DF__Character__Leade__7A672E12")
+  Inventory        Bytes?    @db.VarBinary(3984)
+  MagicList        Bytes?    @db.VarBinary(180)
+  Money            Int?      @default(0, map: "DF_Character_Money")
+  Life             Float?    @db.Real
+  MaxLife          Float?    @db.Real
+  Mana             Float?    @db.Real
+  MaxMana          Float?    @db.Real
+  BP               Float?    @db.Real
+  MaxBP            Float?    @db.Real
+  Shield           Float?    @db.Real
+  MaxShield        Float?    @db.Real
+  MapNumber        Int?      @db.SmallInt
+  MapPosX          Int?      @db.SmallInt
+  MapPosY          Int?      @db.SmallInt
+  MapDir           Int?      @default(0, map: "DF_Character_MapDir") @db.TinyInt
+  PkCount          Int?      @default(0, map: "DF_Character_PkCount")
+  PkLevel          Int?      @default(3, map: "DF_Character_PkLevel")
+  PkTime           Int?      @default(0, map: "DF_Character_PkTime")
+  MDate            DateTime? @db.SmallDateTime
+  LDate            DateTime? @db.SmallDateTime
+  CtlCode          Int?      @default(0, map: "DF_Character_CtlCode") @db.TinyInt
+  DbVersion        Int?      @default(0, map: "DF__Character__DbVer__787EE5A0") @db.TinyInt
+  Quest            Bytes?    @default(dbgenerated("0"), map: "DF__Character__Quest__797309D9") @db.VarBinary(50)
+  ChatLimitTime    Int?      @default(0, map: "DF__Character__ChatL__7B5B524B") @db.SmallInt
+  FruitPoint       Int?      @default(0, map: "DF_Character_FruitPoint")
+  EffectList       Bytes?    @db.VarBinary(208)
+  FruitAddPoint    Int       @default(0, map: "DF__Character__Fruit__4F67C174")
+  FruitSubPoint    Int       @default(0, map: "DF__Character__Fruit__505BE5AD")
+  ResetCount       Int       @default(0, map: "DF__Character__Reset__515009E6")
+  MasterResetCount Int       @default(0, map: "DF__Character__Maste__7CF981FA")
+  ExtInventory     Int       @default(0, map: "DF__Character__ExtIn__40E497F3")
+  Resets           Int       @default(0, map: "DF__Character__Reset__3587F3E0")
+  ResetsDay        Int       @default(0, map: "DF__Character__Reset__367C1819")
+  ResetsWeek       Int       @default(0, map: "DF__Character__Reset__37703C52")
+  ResetsMonth      Int       @default(0, map: "DF__Character__Reset__3864608B")
+  MResets          Int       @default(0, map: "DF__Character__MRese__395884C4")
+  MResetsDay       Int       @default(0, map: "DF__Character__MRese__3A4CA8FD")
+  MResetsWeek      Int       @default(0, map: "DF__Character__MRese__3B40CD36")
+  MResetsMonth     Int       @default(0, map: "DF__Character__MRese__3C34F16F")
+  PKTotal          Int       @default(0, map: "DF__Character__PKTot__3D2915A8")
+  PKDay            Int       @default(0, map: "DF__Character__PKDay__3E1D39E1")
+  PKWeek           Int       @default(0, map: "DF__Character__PKWee__3F115E1A")
+  PKMonth          Int       @default(0, map: "DF__Character__PKMon__40058253")
+  HeroTotal        Int       @default(0, map: "DF__Character__HeroT__40F9A68C")
+  HeroDay          Int       @default(0, map: "DF__Character__HeroD__41EDCAC5")
+  HeroWeek         Int       @default(0, map: "DF__Character__HeroW__42E1EEFE")
+  HeroMonth        Int       @default(0, map: "DF__Character__HeroM__43D61337")
+  tradewins        Int       @default(0, map: "DF__Character__trade__44CA3770")
+  matamata         Int       @default(0, map: "DF__Character__matam__45BE5BA9")
+  duel_total       Int       @default(0, map: "DF__Character__duel___46B27FE2")
+  duel_semanal     Int       @default(0, map: "DF__Character__duel___47A6A41B")
+  duel_mensal      Int       @default(0, map: "DF__Character__duel___489AC854")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model DeathSystem {
+  m_Serial Int?
+  Deaths   Int?
+
+  @@ignore
+}
+
+model DefaultClassType {
+  Class        Int    @id(map: "PK_DefaultClassType") @db.TinyInt
+  Level        Int?   @default(0, map: "DF__DefaultCl__Level__72910220") @db.SmallInt
+  LevelUpPoint Int?   @default(0, map: "DF__DefaultCl__Level__73852659") @db.SmallInt
+  Strength     Int?   @db.SmallInt
+  Dexterity    Int?   @db.SmallInt
+  Vitality     Int?   @db.SmallInt
+  Energy       Int?   @db.SmallInt
+  Leadership   Int?   @default(0, map: "DF__DefaultCl__Leade__719CDDE7") @db.SmallInt
+  Inventory    Bytes? @db.VarBinary(3776)
+  MagicList    Bytes? @db.VarBinary(180)
+  Life         Float? @db.Real
+  MaxLife      Float? @db.Real
+  Mana         Float? @db.Real
+  MaxMana      Float? @db.Real
+  MapNumber    Int?   @db.SmallInt
+  MapPosX      Int?   @db.SmallInt
+  MapPosY      Int?   @db.SmallInt
+  Quest        Bytes? @db.VarBinary(50)
+  DbVersion    Int?   @db.TinyInt
+  EffectList   Bytes? @db.VarBinary(208)
+}
+
+model EventLeoTheHelper {
+  Name   String @id(map: "PK_EventLeoTheHelper") @db.VarChar(10)
+  Status Int?
+}
+
+model EventSantaClaus {
+  Name   String @id(map: "PK_EventSantaClaus") @db.VarChar(10)
+  Status Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model ExtWarehouse {
+  AccountID String @db.VarChar(10)
+  Items     Bytes? @db.VarBinary(3840)
+  Money     Int?
+  Number    Int?
+
+  @@ignore
+}
+
+model GameServerInfo {
+  Number       Int  @id(clustered: false, map: "PK_GameServerInfo") @default(0, map: "DF_GameServerInfo_Number")
+  ItemCount    Int
+  ZenCount     Int? @default(0, map: "DF_GameServerInfo_ZenCount")
+  AceItemCount Int?
+}
+
+model Gens_Rank {
+  Name         String @id(map: "PK_Gens_Rank") @db.VarChar(10)
+  Family       Int?
+  Contribution Int?
+}
+
+model Gens_Reward {
+  Name   String @id(map: "PK_Gens_Reward") @db.VarChar(10)
+  Rank   Int?
+  Status Int?
+}
+
+model Guild {
+  G_Name      String  @id(map: "PK_Guild") @db.VarChar(8)
+  G_Mark      Bytes?  @db.VarBinary(32)
+  G_Score     Int?    @default(0, map: "DF_Guild_G_Score")
+  G_Master    String? @db.VarChar(10)
+  G_Count     Int?
+  G_Notice    String? @db.VarChar(60)
+  Number      Int     @default(autoincrement())
+  G_Type      Int     @default(0, map: "DF__Guild__G_Type__0D7A0286")
+  G_Rival     Int     @default(0, map: "DF__Guild__G_Rival__0E6E26BF")
+  G_Union     Int     @default(0, map: "DF__Guild__G_Union__0F624AF8")
+  MemberCount Int?    @default(0, map: "DF__Guild__MemberCou__10566F31")
+
+  @@index([G_Rival], map: "IDX_GUILD_G_RIVAL")
+  @@index([G_Union], map: "IDX_GUILD_G_UNION")
+  @@index([Number], map: "IDX_GUILD_NUMBER")
+}
+
+model GuildMember {
+  Name     String @id(map: "PK_GuildMember") @db.VarChar(10)
+  G_Name   String @db.VarChar(8)
+  G_Level  Int?   @db.TinyInt
+  G_Status Int    @default(0, map: "DF__GuildMemb__G_Sta__01D345B0") @db.TinyInt
+
+  @@index([G_Name], map: "IX_GuildMember")
+}
+
+model HelperData {
+  Name String @id(map: "PK_HelperData") @db.VarChar(10)
+  Data Bytes? @db.Binary(256)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model ItemLog {
+  SEQ      Int       @default(autoincrement())
+  Acc      String?   @db.VarChar(10)
+  Name     String?   @db.VarChar(10)
+  ItemCode Bytes?    @db.VarBinary(32)
+  SN       Int?
+  iName    String?   @db.VarChar(50)
+  iLvl     String?   @db.VarChar(50)
+  iSkill   Int?      @db.SmallInt
+  iLuck    Int?      @db.SmallInt
+  iExt     String?   @db.VarChar(500)
+  iSet     Int?      @db.SmallInt
+  i380     Int?      @db.SmallInt
+  iJh      Int?      @db.SmallInt
+  SentDate DateTime? @default(now(), map: "DF__ItemLog__SentDat__540C7B00") @db.SmallDateTime
+
+  @@ignore
+}
+
+model LuckyCoin {
+  AccountID String @id(map: "PK_LuckyCoin") @db.VarChar(10)
+  LuckyCoin Int?
+}
+
+model LuckyItem {
+  ItemSerial      Int  @id(map: "PK_LuckyItem")
+  DurabilitySmall Int?
+}
+
+model MEMB_STAT {
+  memb___id    String    @id(map: "PK_MEMB_STAT") @db.VarChar(10)
+  ConnectStat  Int?      @db.TinyInt
+  ServerName   String?   @db.VarChar(50)
+  IP           String?   @db.VarChar(15)
+  ConnectTM    DateTime? @db.SmallDateTime
+  DisConnectTM DateTime? @db.SmallDateTime
+  OnlineHours  Int?      @default(0, map: "DF__MEMB_STAT__Onlin__22751F6C")
+  HWID         String?   @db.VarChar(50)
+}
+
+model MasterSkillTree {
+  Name             String  @id(map: "PK_MasterSkillTree") @db.VarChar(50)
+  MasterLevel      Int?
+  MasterPoint      Int?
+  MasterExperience BigInt?
+  MasterSkill      Bytes?  @db.VarBinary(180)
+}
+
+model MuCastle_DATA {
+  MAP_SVR_GROUP          Int      @id(map: "PK_MuCastle_DATA")
+  SIEGE_START_DATE       DateTime @db.DateTime
+  SIEGE_END_DATE         DateTime @db.DateTime
+  SIEGE_GUILDLIST_SETTED Boolean
+  SIEGE_ENDED            Boolean  @default(false, map: "DF_MuCastle_Data_SEIGE_ENDED")
+  CASTLE_OCCUPY          Boolean  @default(false, map: "DF_MuCastle_Data_CASTLE_OCCUPY")
+  OWNER_GUILD            String   @db.VarChar(8)
+  MONEY                  Float    @default(0, map: "DF_MuCastle_Data_MONEY") @db.Money
+  TAX_RATE_CHAOS         Int      @default(0, map: "DF_MuCastle_Data_TAX_RATE")
+  TAX_RATE_STORE         Int      @default(0, map: "DF_MuCastle_DATA_TAX_RATE_STORE")
+  TAX_HUNT_ZONE          Int      @default(0, map: "DF_MuCastle_DATA_TAX_HUNT_ZONE")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model MuCastle_MONEY_STATISTICS {
+  MAP_SVR_GROUP Int
+  LOG_DATE      DateTime @db.DateTime
+  MONEY_CHANGE  Float    @db.Money
+
+  @@index([MAP_SVR_GROUP], map: "IX_MuCastle_MONEY_STATISTICS", clustered: true)
+  @@index([MAP_SVR_GROUP, LOG_DATE], map: "IX_MuCastle_MONEY_STATISTICS_NC")
+  @@ignore
+}
+
+model MuCastle_NPC {
+  MAP_SVR_GROUP  Int
+  NPC_NUMBER     Int
+  NPC_INDEX      Int
+  NPC_DF_LEVEL   Int
+  NPC_RG_LEVEL   Int
+  NPC_MAXHP      Int
+  NPC_HP         Int
+  NPC_X          Int      @db.TinyInt
+  NPC_Y          Int      @db.TinyInt
+  NPC_DIR        Int      @db.TinyInt
+  NPC_CREATEDATE DateTime @db.DateTime
+
+  @@unique([MAP_SVR_GROUP, NPC_NUMBER, NPC_INDEX], map: "IX_NPC_SUBKEY")
+  @@index([MAP_SVR_GROUP], map: "IX_NPC_PK", clustered: true)
+}
+
+model MuCastle_REG_SIEGE {
+  MAP_SVR_GROUP   Int
+  REG_SIEGE_GUILD String @db.VarChar(8)
+  REG_MARKS       Int
+  IS_GIVEUP       Int    @db.TinyInt
+  SEQ_NUM         Int
+
+  @@unique([MAP_SVR_GROUP, REG_SIEGE_GUILD], map: "IX_ATTACK_GUILD_SUBKEY")
+  @@index([MAP_SVR_GROUP], map: "IX_ATTACK_GUILD_KEY", clustered: true)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model MuCastle_SIEGE_GUILDLIST {
+  MAP_SVR_GROUP  Int
+  GUILD_NAME     String  @db.VarChar(8)
+  GUILD_ID       Int
+  GUILD_INVOLVED Boolean
+  GUILD_SCORE    Int
+
+  @@index([MAP_SVR_GROUP], map: "IX_MuCastle_SIEGE_GUILDLIST", clustered: true)
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model NPC_RESCUE_ITENS {
+  ID             Int       @default(autoincrement())
+  Account        String    @db.VarChar(10)
+  ItemIndex      Int       @default(0, map: "DF_NPC_RESCUE_ITENS_ItemIndex")
+  Level          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Level")
+  Option1        Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Option1")
+  Option2        Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Option2")
+  Option3        Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Option3")
+  Exc            Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Exc")
+  Ancient        Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Ancient")
+  JoH            Int       @default(0, map: "DF_NPC_RESCUE_ITENS_JoH")
+  SockBonus      Int       @default(0, map: "DF_NPC_RESCUE_ITENS_SockBonus")
+  Sock1          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Sock1")
+  Sock2          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Sock2")
+  Sock3          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Sock3")
+  Sock4          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Sock4")
+  Sock5          Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Sock5")
+  Delivered      Int       @default(0, map: "DF_NPC_RESCUE_ITENS_Delivered")
+  ItemTimeExpire Int       @default(0, map: "DF_NPC_RESCUE_ITENS_ItemTimeExpire")
+  TimeExpire     DateTime  @db.DateTime
+  TimeDelivered  DateTime? @db.DateTime
+
+  @@ignore
+}
+
+model OptionData {
+  Name       String @id(map: "PK_OptionData") @db.VarChar(10)
+  SkillKey   Bytes? @db.Binary(20)
+  GameOption Int?   @db.TinyInt
+  Qkey       Int?   @db.TinyInt
+  Wkey       Int?   @db.TinyInt
+  Ekey       Int?   @db.TinyInt
+  ChatWindow Int?   @db.TinyInt
+  Rkey       Int?   @db.TinyInt
+  QWERLevel  Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model QUEST_SYSTEM {
+  AccountID           String  @db.VarChar(10)
+  Name                String? @db.VarChar(10)
+  QuestIdentification Int     @default(0, map: "DF_QUEST_SYSTEM_QuestIdentification")
+  Kills               Int     @default(0, map: "DF_QUEST_SYSTEM_Register1")
+  KillsMonster1       Int     @default(0, map: "DF_Table_1_Register11")
+  KillsMonster2       Int     @default(0, map: "DF_Table_1_Register11_1")
+  KillsMonster3       Int     @default(0, map: "DF_Table_1_Register11_2")
+  KillsMonster4       Int     @default(0, map: "DF_Table_1_Register11_3")
+  KillsMonster5       Int     @default(0, map: "DF_Table_1_Register11_4")
+  KillsMonster6       Int     @default(0, map: "DF_Table_1_Register11_5")
+  KillsMonster7       Int     @default(0, map: "DF_Table_1_Register11_6")
+  KillsMonster8       Int     @default(0, map: "DF_Table_1_Register11_7")
+  KillsMonster9       Int     @default(0, map: "DF_Table_1_Register11_8")
+  Finished            Int     @default(0, map: "DF_QUEST_SYSTEM_Finished")
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model QUEST_SYSTEM_NPC {
+  AccountID           String  @db.VarChar(10)
+  Name                String? @db.VarChar(10)
+  QuestIdentification Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_QuestIdentification")
+  Kills               Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_Register1")
+  KillsMonster1       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster1")
+  KillsMonster2       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster2")
+  KillsMonster3       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster3")
+  KillsMonster4       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster4")
+  KillsMonster5       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster5")
+  KillsMonster6       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster6")
+  KillsMonster7       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster7")
+  KillsMonster8       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster8")
+  KillsMonster9       Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_KillsMonster9")
+  Finished            Int     @default(0, map: "DF_QUEST_SYSTEM_NPC_Finished")
+
+  @@ignore
+}
+
+model QuestKillCount {
+  Name          String @id(map: "PK_QuestKillCount") @db.VarChar(10)
+  QuestIndex    Int?
+  MonsterClass1 Int?
+  KillCount1    Int?
+  MonsterClass2 Int?
+  KillCount2    Int?
+  MonsterClass3 Int?
+  KillCount3    Int?
+  MonsterClass4 Int?
+  KillCount4    Int?
+  MonsterClass5 Int?
+  KillCount5    Int?
+}
+
+model QuestWorld {
+  Name           String @id(map: "PK_QuestWorld") @db.VarChar(10)
+  QuestWorldList Bytes? @db.VarBinary(400)
+}
+
+model RankingBloodCastle {
+  Name  String @id(map: "PK_RankingBloodCastle") @db.VarChar(10)
+  Score Int?
+}
+
+model RankingChaosCastle {
+  Name  String @id(map: "PK_RankingChaosCastle") @db.VarChar(10)
+  Score Int?
+}
+
+model RankingDevilSquare {
+  Name  String @id(map: "PK_RankingDevilSquare") @db.VarChar(10)
+  Score Int?
+}
+
+model RankingDuel {
+  Name      String @id(map: "PK_RankingDuel") @db.VarChar(10)
+  WinScore  Int?
+  LoseScore Int?
+}
+
+model RankingIllusionTemple {
+  Name  String @id(map: "PK_RankingIllusionTemple") @db.VarChar(10)
+  Score Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model TRADE_X {
+  account    String    @db.NVarChar(10)
+  name       String    @db.NVarChar(10)
+  items      Bytes?    @db.VarBinary(1920)
+  targetname String?   @db.NVarChar(10)
+  state      Int       @default(0, map: "DF_TRADE_X_state")
+  date       DateTime? @db.DateTime
+
+  @@ignore
+}
+
+model T_CGuid {
+  GUID Int    @id(map: "PK_T_CGuid") @default(autoincrement())
+  Name String @db.VarChar(10)
+
+  @@index([Name], map: "IX_T_CGuid_Name")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model T_FriendList {
+  GUID       Int
+  FriendGuid Int?
+  FriendName String? @db.VarChar(10)
+  Del        Int?    @default(0, map: "DF_T_FriendList_Del") @db.TinyInt
+
+  @@index([GUID, FriendGuid], map: "IX_T_FriendList")
+  @@ignore
+}
+
+model T_FriendMail {
+  MemoIndex  Int      @default(10, map: "DF_T_FriendMemo_MemoIndex")
+  GUID       Int
+  FriendName String?  @db.VarChar(10)
+  wDate      DateTime @default(now(), map: "DF_T_FriendMemo_wDate") @db.SmallDateTime
+  Subject    String?  @db.VarChar(50)
+  bRead      Boolean  @default(false, map: "DF_T_FriendMemo_MemoRead")
+  Memo       Bytes?   @db.VarBinary(1000)
+  Photo      Bytes?   @db.Binary(18)
+  Dir        Int?     @default(0, map: "DF_T_FriendMemo_Dir") @db.TinyInt
+  Act        Int?     @default(0, map: "DF_T_FriendMemo_Action") @db.TinyInt
+
+  @@id([GUID, MemoIndex], map: "PK_T_FriendMemo")
+}
+
+model T_FriendMain {
+  GUID        Int    @id(map: "PK_T_FriendMain")
+  Name        String @db.VarChar(10)
+  FriendCount Int?   @db.TinyInt
+  MemoCount   Int?   @default(10, map: "DF_T_FriendMain_MemoCount")
+  MemoTotal   Int?   @default(0, map: "DF_T_FriendMain_MemoTotal")
+
+  @@index([Name], map: "IX_T_FriendMain")
+}
+
+model T_PetItem_Info {
+  ItemSerial Int  @id(map: "PK_T_Pet_Info")
+  Pet_Level  Int? @default(0, map: "DF_T_Pet_Info_Pet_Level") @db.SmallInt
+  Pet_Exp    Int? @default(0, map: "DF_T_Pet_Info_Pet_Exp")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model T_WaitFriend {
+  GUID       Int
+  FriendGuid Int
+  FriendName String @db.VarChar(10)
+
+  @@index([GUID], map: "IX_T_WaitFriend")
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model WZ_CW_INFO {
+  MAP_SVR_GROUP  Int?
+  CRYWOLF_OCCUFY Int?
+  CRYWOLF_STATE  Int?
+
+  @@ignore
+}
+
+model warehouse {
+  AccountID   String    @id(map: "PK_warehouse") @db.VarChar(10)
+  Items       Bytes?    @db.VarBinary(3840)
+  Money       Int?      @default(0, map: "DF_warehouse_Money")
+  EndUseDate  DateTime? @db.SmallDateTime
+  DbVersion   Int?      @default(0, map: "DF__warehouse__DbVer__690797E6") @db.TinyInt
+  pw          Int?      @default(0, map: "DF__warehouse__pw__69FBBC1F") @db.SmallInt
+  VaultCounts Int       @default(0, map: "DF__warehouse__Vault__7849DB76")
+  LastVaultID Int       @default(0, map: "DF__warehouse__LastV__793DFFAF")
+}
